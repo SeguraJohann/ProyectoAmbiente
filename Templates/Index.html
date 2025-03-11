@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Manager</title>
+  <!-- Archivo de variables CSS -->
+  <link rel="stylesheet" href="../styles/variables.css">
+  <!-- Archivo de componentes CSS -->
+  <link rel="stylesheet" href="../styles/components.css">
+  <style>
+    /* Estilos básicos inline para estructura que no están en los archivos */
+    body {
+      font-family: var(--font-family-base);
+      margin: 0;
+      padding: 0;
+      background-color: var(--neutral-900);
+      color: var(--neutral-50);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    header {
+      background-color: var(--neutral-800);
+      padding: var(--spacing-md) 0;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-brand {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+    }
+    
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    main {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--spacing-xl) 0;
+    }
+    
+    .main-card {
+      max-width: 600px;
+      width: 100%;
+    }
+    
+    .card-title {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-md);
+      color: var(--neutral-100);
+    }
+    
+    .action-center {
+      margin-top: var(--spacing-lg);
+      text-align: center;
+    }
+    
+    footer {
+      background-color: var(--neutral-800);
+      padding: var(--spacing-md) 0;
+      text-align: center;
+      color: var(--neutral-400);
+      border-top: 1px solid var(--neutral-700);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="nav-brand">
+          <a href="#" class="nav-link active">PDF Manager</a>
+        </div>
+        <div class="nav-menu">
+          <a href="#" class="nav-link">Mis PDFs</a>
+          <a href="#" class="btn btn-outline">Iniciar Sesión</a>
+          <a href="#" class="btn btn-primary">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="container">
+      <div class="card main-card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg);">
+        <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+          Gestiona tus documentos PDF
+        </div>
+        <div class="card-body" style="color: var(--neutral-200);">
+          <h2 class="card-title">Bienvenido a PDF Manager</h2>
+          <p style="margin-bottom: var(--spacing-lg);">
+            Una herramienta simple para gestionar, organizar y compartir tus archivos PDF de manera segura.
+            Sube tus documentos y accede a ellos desde cualquier dispositivo.
+          </p>
+          <div class="alert" style="padding: var(--spacing-md); margin-bottom: var(--spacing-md); border-radius: var(--border-radius-sm); border-left: 4px solid var(--info-color); background-color: rgba(52, 152, 219, 0.1); color: var(--info-color);">
+            <strong>Consejo:</strong> Puedes subir múltiples archivos a la vez arrastrándolos a la zona de carga.
+          </div>
+          <div class="action-center">
+            <button class="btn btn-primary">Añadir Archivos</button>
+          </div>
+        </div>
+        <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
+          <span class="badge badge-primary">Seguro</span>
+          <span class="badge badge-secondary">Rápido</span>
+          <span class="badge badge-neutral">Fácil de usar</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>PDF Manager © 2025 - Creado por Tu Nombre</p>
+    </div>
+  </footer>
+</body>
+</html>

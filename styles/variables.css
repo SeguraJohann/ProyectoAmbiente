@@ -32,8 +32,8 @@
     --info-color: #3621BF;
     
     /* Tipografía */
-    --font-family-base: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    --font-family-heading: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-base: 'Roboto', sans-serif;
+    --font-family-heading: 'Roboto', sans-serif;
     
     /* Tamaños de fuente */
     --font-size-xs: 0.75rem;    /* 12px */

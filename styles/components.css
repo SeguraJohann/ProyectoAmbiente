@@ -16,6 +16,7 @@
     line-height: 1.5;
     border-radius: var(--border-radius-sm);
     transition: all var(--transition-normal);
+    text-decoration: none; 
   }
   
   .btn-primary {
@@ -37,18 +38,18 @@
   }
   
   .btn-outline {
-    background-color: transparent;
+    background-color: var(--neutral-900);
     border-color: var(--neutral-300);
-    color: var(--neutral-800);
+    color: white;
   }
   
   .btn-outline:hover {
-    background-color: var(--neutral-100);
+    background-color: var(--info-color);
   }
   
   /* Tarjetas */
   .card {
-    background-color: white;
+    background-color: var(--neutral-800);
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-sm);
     overflow: hidden;

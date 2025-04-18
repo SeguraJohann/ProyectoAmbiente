@@ -1,0 +1,12 @@
++ Crear contenido general de vistas (sin navbar ni footer)
++ Cargar estilos en el navbar
+	+ Subir css a carpeta
+	+ Cambiar mappeo de directorios en layout
+	+ 
++ Hacer navbar dinámico
++ Crear carpetas para módulos
++ Crear controllers 
++ Crear Modelos
++ Hacer CRUDS
++ Hacer manejo de archivos
++ 

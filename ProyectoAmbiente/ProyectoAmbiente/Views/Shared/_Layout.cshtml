@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProyectoAmbiente</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/variables.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProyectoAmbiente.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="nav-brand">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active">Proyecto ACWS</a>
+                </div>
+                <div class="nav-menu">
+                    @if (Context.Session.GetInt32("UsuarioId").HasValue)
+                    {
+                        <span style="color: var(--neutral-300); margin-right: 15px;">
+                            Bienvenido, @Context.Session.GetString("UsuarioNombre")
+                        </span>
+                        <a asp-area="" asp-controller="User" asp-action="Index" class="btn btn-outline">Mis PDFs</a>
+                        <form asp-controller="User" asp-action="Logout" method="post" style="display: inline;">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-outline">Cerrar Sesión</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="User" asp-action="Login" class="btn btn-outline">Iniciar Sesión</a>
+                        <a asp-area="" asp-controller="User" asp-action="Register" class="btn btn-outline">Registrarse</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - ProyectoAmbiente - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

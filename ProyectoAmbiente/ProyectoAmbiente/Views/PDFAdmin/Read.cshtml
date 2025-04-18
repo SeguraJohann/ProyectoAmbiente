@@ -1,0 +1,84 @@
+﻿ <!-- MAIN CONTENT -->
+<main>
+    <div class="container">
+        <div style="display: flex; gap: var(--spacing-lg);">
+
+            <!-- Columna izquierda: Área principal de lectura -->
+            <div style="flex: 3;">
+                <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); height: 80vh; overflow: auto;">
+                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+                        Visualizador de PDF
+                    </div>
+                    <div class="card-body" style="color: var(--neutral-200); display: flex; justify-content: center; align-items: center;">
+                        <!-- Aquí se mostrará el contenido del PDF -->
+                        <p style="text-align: center; color: var(--neutral-400);">
+                            Seleccione un archivo PDF para visualizar su contenido
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna derecha: Notas y estadísticas -->
+            <div style="flex: 1;">
+                <!-- Notas del usuario -->
+                <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); margin-bottom: var(--spacing-lg);">
+                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+                        Notas
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="10" placeholder="Escriba sus notas aquí..." style="background-color: var(--neutral-700); border-color: var(--neutral-600); color: var(--neutral-200); resize: none;"></textarea>
+                        </div>
+                        <div class="action-center">
+                            <button class="btn btn-primary">Guardar progreso</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg);">
+                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+                        Estadísticas de lectura
+                    </div>
+                    <div class="card-body">
+                        <div style="display: flex; gap: var(--spacing-md);">
+                            <!-- Progreso -->
+                            <div style="flex: 1;">
+                                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                                    <div class="card-body" style="text-align: center;">
+                                        <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">Progreso</p>
+                                        <p style="color: var(--primary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
+                                            65%
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Promedio de caracteres -->
+                            <div style="flex: 1;">
+                                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                                    <div class="card-body" style="text-align: center;">
+                                        <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">CPM</p>
+                                        <p style="color: var(--secondary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
+                                            320
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alertas -->
+                        <div class="alert" style="margin-top: var(--spacing-md); padding: var(--spacing-md); border-radius: var(--border-radius-sm); border-left: 4px solid var(--info-color); background-color: rgba(52, 152, 219, 0.1); color: var(--info-color);">
+                            <strong>Consejo:</strong> Toma descansos cada 25 minutos para mayor retención.
+                        </div>
+                    </div>
+                    <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
+                        <span class="badge badge-primary">Guardado</span>
+                        <span class="badge badge-neutral">Última actualización: 5 min</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

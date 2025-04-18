@@ -1,0 +1,324 @@
+﻿<main>
+    <div class="container">
+        <!-- Introducción -->
+        <section class="card">
+            <div class="card-header">Introducción</div>
+            <div class="card-body">
+                <p>Esta guía de estilos documenta los elementos de diseño y componentes utilizados en nuestra aplicación en modo oscuro. Utiliza este documento como referencia para mantener la consistencia visual en todas las vistas.</p>
+                <div class="alert alert-info">
+                    <strong>Nota:</strong> Esta guía se actualiza automáticamente al modificar los archivos <code>variables.css</code> y <code>components.css</code>.
+                </div>
+            </div>
+        </section>
+
+        <!-- Colores -->
+        <section class="card">
+            <div class="card-header">Colores</div>
+            <div class="card-body">
+                <h3>Colores Principales</h3>
+                <div class="row">
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--primary-color); border: 1px solid var(--neutral-700);"></div>
+                        <p>--primary-color</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--primary-dark); border: 1px solid var(--neutral-700);"></div>
+                        <p>--primary-dark</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--primary-light); border: 1px solid var(--neutral-700);"></div>
+                        <p>--primary-light</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--secondary-color); border: 1px solid var(--neutral-700);"></div>
+                        <p>--secondary-color</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--secondary-dark); border: 1px solid var(--neutral-700);"></div>
+                        <p>--secondary-dark</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--secondary-light); border: 1px solid var(--neutral-700);"></div>
+                        <p>--secondary-light</p>
+                    </div>
+                </div>
+
+                <h3>Colores Neutrales</h3>
+                <div class="row">
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-900); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-900</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-800); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-800</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-700); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-700</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-600); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-600</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-500); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-500</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-400); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-400</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-300); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-300</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-200); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-200</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-100); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-100</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--neutral-50); border: 1px solid var(--neutral-700);"></div>
+                        <p>--neutral-50</p>
+                    </div>
+                </div>
+
+                <h3>Colores de Estado</h3>
+                <div class="row">
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--success-color); border: 1px solid var(--neutral-700);"></div>
+                        <p>--success-color</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--warning-color); border: 1px solid var(--neutral-700);"></div>
+                        <p>--warning-color</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--danger-color); border: 1px solid var(--neutral-700);"></div>
+                        <p>--danger-color</p>
+                    </div>
+                    <div>
+                        <div style="width: 100px; height: 100px; background-color: var(--info-color); border: 1px solid var(--neutral-700);"></div>
+                        <p>--info-color</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tipografía -->
+        <section class="card">
+            <div class="card-header">Tipografía</div>
+            <div class="card-body">
+                <h3>Tamaños de Fuente</h3>
+                <p style="font-size: var(--font-size-xs);">Texto Extra Pequeño (--font-size-xs)</p>
+                <p style="font-size: var(--font-size-sm);">Texto Pequeño (--font-size-sm)</p>
+                <p style="font-size: var(--font-size-md);">Texto Mediano (--font-size-md)</p>
+                <p style="font-size: var(--font-size-lg);">Texto Grande (--font-size-lg)</p>
+                <p style="font-size: var(--font-size-xl);">Texto Extra Grande (--font-size-xl)</p>
+                <p style="font-size: var(--font-size-2xl);">Texto 2XL (--font-size-2xl)</p>
+                <p style="font-size: var(--font-size-3xl);">Texto 3XL (--font-size-3xl)</p>
+                <p style="font-size: var(--font-size-4xl);">Texto 4XL (--font-size-4xl)</p>
+            </div>
+        </section>
+
+        <!-- Espaciados -->
+        <section class="card">
+            <div class="card-header">Espaciados</div>
+            <div class="card-body">
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: var(--spacing-xs); height: var(--spacing-xs); background-color: var(--primary-light); margin-right: 1rem;"></div>
+                        <p>--spacing-xs (0.25rem / 4px)</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: var(--spacing-sm); height: var(--spacing-sm); background-color: var(--primary-light); margin-right: 1rem;"></div>
+                        <p>--spacing-sm (0.5rem / 8px)</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: var(--spacing-md); height: var(--spacing-md); background-color: var(--primary-light); margin-right: 1rem;"></div>
+                        <p>--spacing-md (1rem / 16px)</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: var(--spacing-lg); height: var(--spacing-lg); background-color: var(--primary-light); margin-right: 1rem;"></div>
+                        <p>--spacing-lg (1.5rem / 24px)</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: var(--spacing-xl); height: var(--spacing-xl); background-color: var(--primary-light); margin-right: 1rem;"></div>
+                        <p>--spacing-xl (2rem / 32px)</p>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: var(--spacing-2xl); height: var(--spacing-2xl); background-color: var(--primary-light); margin-right: 1rem;"></div>
+                        <p>--spacing-2xl (3rem / 48px)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botones -->
+        <section class="card">
+            <div class="card-header">Botones</div>
+            <div class="card-body">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary">Botón Primario</button>
+                    <button class="btn btn-secondary">Botón Secundario</button>
+                    <button class="btn btn-outline">Botón Outline</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarjetas -->
+        <section class="card">
+            <div class="card-header">Tarjetas</div>
+            <div class="card-body">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div style="width: 300px; background-color: var(--neutral-700); border-radius: var(--border-radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
+                        <div style="padding: var(--spacing-md); border-bottom: 1px solid var(--neutral-600); font-weight: 600;">
+                            Título de la Tarjeta
+                        </div>
+                        <div style="padding: var(--spacing-md);">
+                            <p>Este es el contenido de la tarjeta. Aquí puedes colocar cualquier información relevante.</p>
+                        </div>
+                        <div style="padding: var(--spacing-md); border-top: 1px solid var(--neutral-600); background-color: var(--neutral-800);">
+                            <button class="btn btn-primary">Acción</button>
+                        </div>
+                    </div>
+
+                    <div style="width: 300px; background-color: var(--neutral-700); border-radius: var(--border-radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
+                        <div style="padding: var(--spacing-md); border-bottom: 1px solid var(--neutral-600); font-weight: 600;">
+                            Otra Tarjeta
+                        </div>
+                        <div style="padding: var(--spacing-md);">
+                            <p>Las tarjetas son útiles para agrupar información relacionada.</p>
+                        </div>
+                        <div style="padding: var(--spacing-md); border-top: 1px solid var(--neutral-600); background-color: var(--neutral-800);">
+                            <button class="btn btn-outline">Cancelar</button>
+                            <button class="btn btn-secondary">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formularios -->
+        <section class="card">
+            <div class="card-header">Formularios</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingrese su nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" placeholder="Ingrese su correo">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mensaje</label>
+                        <textarea class="form-control" rows="3" placeholder="Escriba su mensaje"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Alertas -->
+        <section class="card">
+            <div class="card-header">Alertas</div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <strong>¡Éxito!</strong> La operación se ha completado correctamente.
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Información:</strong> Hay actualizaciones disponibles para tu sistema.
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Advertencia:</strong> Esto podría causar algunos problemas.
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>Error:</strong> Ha ocurrido un problema al procesar tu solicitud.
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges -->
+        <section class="card">
+            <div class="card-header">Badges</div>
+            <div class="card-body">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="badge badge-primary">Primario</span>
+                    <span class="badge badge-secondary">Secundario</span>
+                    <span class="badge badge-neutral">Neutral</span>
+                </div>
+
+                <div style="margin-top: var(--spacing-md);">
+                    <p>Nuevo <span class="badge badge-primary">Destacado</span></p>
+                    <p>Actualización <span class="badge badge-secondary">v2.0</span></p>
+                    <p>Estado <span class="badge badge-neutral">En progreso</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegación -->
+        <section class="card">
+            <div class="card-header">Navegación</div>
+            <div class="card-body">
+                <ul class="nav" style="background-color: var(--neutral-700); border-radius: var(--border-radius-md); padding: var(--spacing-xs);">
+                    <li><a href="#" class="nav-link active">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Productos</a></li>
+                    <li><a href="#" class="nav-link">Servicios</a></li>
+                    <li><a href="#" class="nav-link">Contacto</a></li>
+                    <li><a href="#" class="nav-link">Acerca de</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Bordes -->
+        <section class="card">
+            <div class="card-header">Radios de Borde</div>
+            <div class="card-body">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div style="width: 100px; height: 100px; background-color: var(--primary-color); border-radius: var(--border-radius-sm); display: flex; justify-content: center; align-items: center; color: white;">
+                        --border-radius-sm
+                    </div>
+                    <div style="width: 100px; height: 100px; background-color: var(--secondary-color); border-radius: var(--border-radius-md); display: flex; justify-content: center; align-items: center; color: white;">
+                        --border-radius-md
+                    </div>
+                    <div style="width: 100px; height: 100px; background-color: var(--info-color); border-radius: var(--border-radius-lg); display: flex; justify-content: center; align-items: center; color: white;">
+                        --border-radius-lg
+                    </div>
+                    <div style="width: 100px; height: 100px; background-color: var(--warning-color); border-radius: var(--border-radius-full); display: flex; justify-content: center; align-items: center; color: white;">
+                        --border-radius-full
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sombras -->
+        <section class="card">
+            <div class="card-header">Sombras</div>
+            <div class="card-body">
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                    <div style="width: 150px; height: 150px; background-color: var(--neutral-700); box-shadow: var(--shadow-sm); display: flex; justify-content: center; align-items: center; color: var(--neutral-200);">
+                        --shadow-sm
+                    </div>
+                    <div style="width: 150px; height: 150px; background-color: var(--neutral-700); box-shadow: var(--shadow-md); display: flex; justify-content: center; align-items: center; color: var(--neutral-200);">
+                        --shadow-md
+                    </div>
+                    <div style="width: 150px; height: 150px; background-color: var(--neutral-700); box-shadow: var(--shadow-lg); display: flex; justify-content: center; align-items: center; color: var(--neutral-200);">
+                        --shadow-lg
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

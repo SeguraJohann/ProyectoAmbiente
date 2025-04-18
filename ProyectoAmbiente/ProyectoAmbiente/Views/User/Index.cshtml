@@ -1,0 +1,311 @@
+﻿  <!-- MAIN CONTENT -->
+<main>
+    <div class="container">
+      <div style="display: flex; gap: var(--spacing-xl);">
+        
+        <!-- Columna izquierda - Información del usuario -->
+        <div style="width: 300px;">
+          <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg);">
+            <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+              Perfil de Usuario
+            </div>
+            <div class="card-body">
+              <div style="text-align: center; margin-bottom: var(--spacing-lg);"><!--
+                <div style="width: 100px; height: 100px; background-color: var(--neutral-700); border-radius: var(--border-radius-full); margin: 0 auto; display: flex; justify-content: center; align-items: center; color: var(--neutral-300); font-size: var(--font-size-4xl);">
+                  U
+                </div>-->
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: var(--neutral-300);">Nombre de Usuario</label>
+                <p style="color: var(--neutral-200); font-size: var(--font-size-lg);">Johann Segura</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: var(--neutral-300);">Correo Electrónico</label>
+                <p style="color: var(--neutral-200);">johann.segura.chacon@gmail.com</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color: var(--neutral-300);">Fecha de Registro</label>
+                <p style="color: var(--neutral-200);">12 Enero, 2025</p>
+              </div>
+              <div style="margin-top: var(--spacing-lg);">
+                <button class="btn btn-outline" style="width: 100%; color: var(--neutral-100); border-color: var(--neutral-600);">
+                  Editar Perfil
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Columna derecha - Zona de arrastre y Archivos -->
+        <div style="flex: 1;">
+          <!-- Zona de arrastre para subir archivos -->
+          <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); margin-bottom: var(--spacing-xl);">
+            <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+              Subir Archivos
+            </div>
+            <div class="card-body" style="text-align: center; padding: var(--spacing-xl);">
+              <div style="border: 2px dashed var(--neutral-600); border-radius: var(--border-radius-md); padding: var(--spacing-xl); background-color: var(--neutral-700);">
+                <p style="color: var(--neutral-300); margin-bottom: var(--spacing-md);">
+                  Arrastra tus archivos PDF aquí o haz clic para seleccionarlos
+                </p>
+                <button class="btn btn-primary">Seleccionar Archivos</button>
+              </div>
+            </div>
+            <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
+              <span class="badge badge-primary">PDF</span>
+              <span class="badge badge-secondary">Máx. 25MB</span>
+              <span class="badge badge-neutral">Múltiples archivos</span>
+            </div>
+          </div>
+          
+          <!-- Matriz de archivos del usuario -->
+          <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg);">
+            <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+              Mis Archivos PDF
+            </div>
+            <div class="card-body">
+              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--spacing-md);">
+                
+                <!-- Archivo 1 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo1.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 2 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo2.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 3 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo3.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 4 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo4.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 5 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo5.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 6 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo6.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 7 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo7.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 8 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo8.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 9 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo9.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 10 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo10.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 11 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo11.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 12 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo12.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 13 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo13.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 14 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo14.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+                <!-- Archivo 15 -->
+                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                  <div style="height: 120px; background-color: var(--neutral-600); display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                    <div style="text-align: center; padding: var(--spacing-md);">
+                      <span style="color: var(--neutral-200); font-size: var(--font-size-3xl);">PDF</span>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: var(--spacing-sm);">
+                    <p style="color: var(--neutral-200); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">archivo15.pdf</p>
+                  </div>
+                  <div class="card-footer" style="background-color: var(--neutral-800); border-top: 1px solid var(--neutral-600); padding: var(--spacing-xs);">
+                    <button class="btn btn-outline" style="width: 100%; padding: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--neutral-100); border-color: var(--neutral-600);">Continuar PDF</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <span class="badge badge-primary">15 archivos</span>
+                  <span class="badge badge-neutral">10 MB utilizados</span>
+                </div>
+                <button class="btn btn-outline" style="color: var(--neutral-100); border-color: var(--neutral-600);">
+                  Mostrar más
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1WfzAyxXU/xmAi3ItHMSp2cUZXD2sSyRrTXdaEUhEWs=",
+  "Hash": "oHsbGyd3oF4/wDrWHpc4Ebx09R1kLDvSX4+MyxtcVvc=",
   "Source": "ProyectoAmbiente",
   "BasePath": "_content/ProyectoAmbiente",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\pdfManager.js"
+    },
+    {
+      "Identity": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfReader.js",
+      "SourceId": "ProyectoAmbiente",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\",
+      "BasePath": "_content/ProyectoAmbiente",
+      "RelativePath": "js/pdfReader.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\pdfReader.js"
     },
     {
       "Identity": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\site.js",

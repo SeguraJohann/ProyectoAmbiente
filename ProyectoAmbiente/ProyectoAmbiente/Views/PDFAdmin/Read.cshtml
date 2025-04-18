@@ -1,19 +1,51 @@
-﻿ <!-- MAIN CONTENT -->
+﻿@{
+    ViewData["Title"] = "Lector de PDF";
+    var documento = ViewBag.Documento as ProyectoAmbiente.Models.DocumentoPDF;
+    var progreso = ViewBag.Progreso as ProyectoAmbiente.Models.ProgresoMecanografia;
+}
+
+<!-- MAIN CONTENT -->
 <main>
     <div class="container">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert @TempData["AlertType"]">
+                @TempData["Message"]
+            </div>
+        }
         <div style="display: flex; gap: var(--spacing-lg);">
 
             <!-- Columna izquierda: Área principal de lectura -->
             <div style="flex: 3;">
                 <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); height: 80vh; overflow: auto;">
-                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
-                        Visualizador de PDF
+                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100); display: flex; justify-content: space-between; align-items: center;">
+                        <span>@(documento?.Nombre ?? "Visualizador de PDF")</span>
+                        <div>
+                            <span id="paginaActual" style="margin-right: var(--spacing-md); color: var(--neutral-300);">Página 1 de @(documento?.NumPaginas ?? 0)</span>
+                            <div style="display: inline-block;">
+                                <button id="btnPrevPage" class="btn btn-outline" style="padding: var(--spacing-xs) var(--spacing-sm); margin-right: var(--spacing-xs);">
+                                    <i class="fas fa-chevron-left"></i> Anterior
+                                </button>
+                                <button id="btnNextPage" class="btn btn-outline" style="padding: var(--spacing-xs) var(--spacing-sm);">
+                                    Siguiente <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body" style="color: var(--neutral-200); display: flex; justify-content: center; align-items: center;">
-                        <!-- Aquí se mostrará el contenido del PDF -->
-                        <p style="text-align: center; color: var(--neutral-400);">
-                            Seleccione un archivo PDF para visualizar su contenido
-                        </p>
+                    <div class="card-body" style="color: var(--neutral-200); display: flex; justify-content: center; align-items: center; position: relative;">
+                        @if (documento != null)
+                        {
+                            <canvas id="pdfViewer" style="width: 100%; height: auto;"></canvas>
+                            <div id="loadingIndicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--neutral-300); font-size: var(--font-size-xl);">
+                                Cargando PDF...
+                            </div>
+                        }
+                        else
+                        {
+                            <p style="text-align: center; color: var(--neutral-400);">
+                                Seleccione un archivo PDF para visualizar su contenido
+                            </p>
+                        }
                     </div>
                 </div>
             </div>
@@ -27,10 +59,10 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <textarea class="form-control" rows="10" placeholder="Escriba sus notas aquí..." style="background-color: var(--neutral-700); border-color: var(--neutral-600); color: var(--neutral-200); resize: none;"></textarea>
+                            <textarea id="userNotes" class="form-control" rows="10" placeholder="Escriba sus notas aquí..." style="background-color: var(--neutral-700); border-color: var(--neutral-600); color: var(--neutral-200); resize: none;"></textarea>
                         </div>
                         <div class="action-center">
-                            <button class="btn btn-primary">Guardar progreso</button>
+                            <button id="btnSaveProgress" class="btn btn-primary">Guardar progreso</button>
                         </div>
                     </div>
                 </div>
@@ -47,8 +79,8 @@
                                 <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
                                     <div class="card-body" style="text-align: center;">
                                         <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">Progreso</p>
-                                        <p style="color: var(--primary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
-                                            65%
+                                        <p id="progresoLectura" style="color: var(--primary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
+                                            @(progreso?.PorcentajeCompletado.ToString("F0") ?? "0")%
                                         </p>
                                     </div>
                                 </div>
@@ -59,8 +91,8 @@
                                 <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
                                     <div class="card-body" style="text-align: center;">
                                         <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">CPM</p>
-                                        <p style="color: var(--secondary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
-                                            320
+                                        <p id="caracteresMinuto" style="color: var(--secondary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
+                                            0
                                         </p>
                                     </div>
                                 </div>
@@ -73,8 +105,8 @@
                         </div>
                     </div>
                     <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
-                        <span class="badge badge-primary">Guardado</span>
-                        <span class="badge badge-neutral">Última actualización: 5 min</span>
+                        <span id="estadoGuardado" class="badge badge-primary">Guardado</span>
+                        <span id="ultimaActualizacion" class="badge badge-neutral">Última actualización: @(progreso != null ? $"{(DateTime.Now - progreso.UltimaActualizacion).Minutes} min" : "Nunca")</span>
                     </div>
                 </div>
             </div>
@@ -82,3 +114,48 @@
         </div>
     </div>
 </main>
+
+@section Scripts {
+    <!-- PDF.js Library from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <!-- Cargar primero el script de PDF Reader -->
+    <script src="~/js/pdfReader.js"></script>
+
+    <!-- Inicializar después de que pdfReader.js esté cargado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        @if (documento != null)
+        {
+            <text>
+                            // Datos del documento
+                        const documentoId = @documento.Id;
+                        const documentoNumPaginas = @documento.NumPaginas;
+                        const documentoNombre = '@documento.Nombre';
+
+                        // Datos del progreso
+                        const progresoInicial = {
+                            paginaActual: @progreso.PaginaActual,
+                        indiceCaracter: @progreso.IndiceCaracter,
+                        posicionX: @progreso.PosicionX,
+                        posicionY: @progreso.PosicionY,
+                        elementoId: '@progreso.ElementoId',
+                        fragmentoContexto: '@progreso.FragmentoContexto',
+                        porcentajeCompletado: @progreso.PorcentajeCompletado,
+                        textoCompletado: @Html.Raw(Json.Serialize(progreso.TextoCompletado))
+                            };
+
+                        // Asegurarse de que la función esté disponible antes de llamarla
+                        if (typeof window.initPdfViewer === 'function') {
+                            window.initPdfViewer(documentoId, documentoNumPaginas, progresoInicial);
+                            } else {
+                            console.error('La función initPdfViewer no está disponible. Verifica que pdfReader.js se cargó correctamente.');
+                            }
+            </text>
+        }
+                });
+    </script>
+}

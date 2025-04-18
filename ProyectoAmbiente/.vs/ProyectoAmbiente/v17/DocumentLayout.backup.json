@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\pdfadmin\\read.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\pdfadmin\\read.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\wwwroot\\js\\pdfreader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\wwwroot\\js\\pdfreader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\pdfadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\pdfadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -33,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\user\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\user\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\pdfadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\pdfadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 56,
+          "SelectedChildIndex": 57,
           "Children": [
             {
               "$type": "Bookmark",
@@ -274,20 +282,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "pdfReader.js",
+              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfReader.js",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\wwwroot\\js\\pdfReader.js",
+              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfReader.js",
+              "RelativeToolTip": "ProyectoAmbiente\\wwwroot\\js\\pdfReader.js",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAiwJABAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-18T02:19:15.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Read.cshtml",
+              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "RelativeToolTip": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAYwKAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-18T02:11:58.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\UserController.cs",
               "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
               "RelativeToolTip": "ProyectoAmbiente\\Controllers\\UserController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAewFUAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-18T00:26:59.21Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "pdfManager.js",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfManager.js",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\wwwroot\\js\\pdfManager.js",
@@ -299,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\User\\Index.cshtml",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\User\\Index.cshtml",
@@ -311,7 +345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "DocumentoPDF.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\DocumentoPDF.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\DocumentoPDF.cs",
@@ -323,7 +357,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Program.cs",
@@ -335,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\appsettings.json",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\appsettings.json",
@@ -347,7 +381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Register.cshtml",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\User\\Register.cshtml",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\User\\Register.cshtml",
@@ -359,19 +393,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "PDFAdmin.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
               "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
               "RelativeToolTip": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALkAAAAAAAAAAAAmwOUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:26:57.277Z"
+              "WhenOpened": "2025-04-18T00:26:57.277Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Usuario.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\Usuario.cs",

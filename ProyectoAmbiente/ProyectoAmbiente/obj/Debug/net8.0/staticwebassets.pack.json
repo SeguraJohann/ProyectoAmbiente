@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\js\\pdfManager.js"
     },
     {
+      "Id": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfReader.js",
+      "PackagePath": "staticwebassets\\js\\pdfReader.js"
+    },
+    {
       "Id": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

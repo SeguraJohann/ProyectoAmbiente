@@ -167,3 +167,5 @@ D:\U\U\Ambiente web Cliente Servidor\Proyecto\ProyectoAmbiente\ProyectoAmbiente\
 D:\U\U\Ambiente web Cliente Servidor\Proyecto\ProyectoAmbiente\ProyectoAmbiente\ProyectoAmbiente\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\U\U\Ambiente web Cliente Servidor\Proyecto\ProyectoAmbiente\ProyectoAmbiente\ProyectoAmbiente\obj\Debug\net8.0\ProyectoAmbiente.csproj.AssemblyReference.cache
 D:\U\U\Ambiente web Cliente Servidor\Proyecto\ProyectoAmbiente\ProyectoAmbiente\ProyectoAmbiente\obj\Debug\net8.0\Proyecto.34C93281.Up2Date
+D:\U\U\Ambiente web Cliente Servidor\Proyecto\ProyectoAmbiente\ProyectoAmbiente\ProyectoAmbiente\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\U\U\Ambiente web Cliente Servidor\Proyecto\ProyectoAmbiente\ProyectoAmbiente\ProyectoAmbiente\bin\Debug\net8.0\itextsharp.dll

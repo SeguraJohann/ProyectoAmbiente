@@ -4,7 +4,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using ProyectoAmbiente.Models;
+using iTextSharp.text.pdf;
 using System.IO;
+using System.Reflection.PortableExecutable;
 
 namespace ProyectoAmbiente.Controllers
 {
@@ -25,15 +27,23 @@ namespace ProyectoAmbiente.Controllers
         public async Task<IActionResult> Index()
         {
             // Verifica si el usuario está autenticado
-            if (HttpContext.Session.GetInt32("UsuarioId") == null)
+            int? usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+            if (usuarioId == null)
             {
                 return RedirectToAction("Login");
             }
 
-            // Obtiene el ID del usuario desde la sesión
-            int usuarioId = HttpContext.Session.GetInt32("UsuarioId").Value;
+            // Obtener información del usuario para mostrar en la vista
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == usuarioId);
+            if (usuario == null)
+            {
+                return RedirectToAction("Login");
+            }
 
-            // Carga los documentos PDF del usuario
+            ViewBag.UsuarioEmail = usuario.Email;
+            ViewBag.FechaRegistro = usuario.FechaRegistro.ToString("dd MMMM, yyyy");
+
+            // Obtener los PDFs del usuario
             var documentos = await _context.DocumentosPDF
                 .Where(d => d.UsuarioId == usuarioId)
                 .OrderByDescending(d => d.FechaSubida)
@@ -45,108 +55,108 @@ namespace ProyectoAmbiente.Controllers
         // POST: /User/SubirPDF
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SubirPDF(List<IFormFile> archivos)
+        public async Task<IActionResult> SubirPDF(List<IFormFile> pdfFiles)
         {
             // Verifica si el usuario está autenticado
-            if (HttpContext.Session.GetInt32("UsuarioId") == null)
+            int? usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+            if (usuarioId == null)
             {
                 return RedirectToAction("Login");
             }
 
-            // Obtiene el ID del usuario desde la sesión
-            int usuarioId = HttpContext.Session.GetInt32("UsuarioId").Value;
-
-            if (archivos == null || archivos.Count == 0)
+            if (pdfFiles == null || pdfFiles.Count == 0)
             {
-                TempData["Error"] = "No se ha seleccionado ningún archivo.";
+                TempData["Message"] = "No se seleccionaron archivos.";
+                TempData["AlertType"] = "alert-warning";
                 return RedirectToAction("Index");
             }
 
-            // Validaciones y procesamiento de cada archivo
-            int contadorExito = 0;
-            int contadorError = 0;
+            // Directorio base para almacenar PDFs
+            string pdfsDirectory = "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\PDFS\\";
 
-            foreach (var archivo in archivos)
+            // Crear directorio si no existe
+            if (!Directory.Exists(pdfsDirectory))
             {
-                if (archivo.Length > 0)
+                Directory.CreateDirectory(pdfsDirectory);
+            }
+
+            int archivosSubidos = 0;
+            List<string> errores = new List<string>();
+
+            foreach (var pdfFile in pdfFiles)
+            {
+                // Validar que sea un PDF
+                if (Path.GetExtension(pdfFile.FileName).ToLower() != ".pdf")
                 {
-                    // Verificar extensión
-                    string extension = Path.GetExtension(archivo.FileName).ToLower();
-                    if (extension != ".pdf")
+                    errores.Add($"El archivo {pdfFile.FileName} no es un PDF válido.");
+                    continue;
+                }
+
+                // Validar tamaño (25MB máximo)
+                if (pdfFile.Length > 25 * 1024 * 1024)
+                {
+                    errores.Add($"El archivo {pdfFile.FileName} excede el tamaño máximo de 25MB.");
+                    continue;
+                }
+
+                try
+                {
+                    // Generar nombre único para el archivo
+                    string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    string nombreArchivo = $"{usuarioId}_{timestamp}_{Path.GetFileName(pdfFile.FileName)}";
+                    nombreArchivo = nombreArchivo.Replace(" ", "_"); // Eliminar espacios
+
+                    string rutaCompleta = Path.Combine(pdfsDirectory, nombreArchivo);
+
+                    // Guardar el archivo
+                    using (var stream = new FileStream(rutaCompleta, FileMode.Create))
                     {
-                        contadorError++;
-                        continue;
+                        await pdfFile.CopyToAsync(stream);
                     }
 
-                    // Verificar tamaño (25MB máximo)
-                    if (archivo.Length > 25 * 1024 * 1024)
+                    // Obtener el número de páginas del PDF
+                    int numPaginas = 0;
+                    using (PdfReader reader = new PdfReader(rutaCompleta))
                     {
-                        contadorError++;
-                        continue;
+                        numPaginas = reader.NumberOfPages;
                     }
 
-                    try
+                    // Guardar información en la base de datos
+                    var documentoPDF = new DocumentoPDF
                     {
-                        // Crear directorio si no existe
-                        string rutaDirectorio = Path.Combine("D:", "U", "U", "Ambiente web Cliente Servidor",
-                            "Proyecto", "ProyectoAmbiente", "ProyectoAmbiente", "ProyectoAmbiente", "PDFS");
+                        UsuarioId = usuarioId.Value,
+                        Nombre = Path.GetFileName(pdfFile.FileName),
+                        Ruta = rutaCompleta,
+                        FechaSubida = DateTime.Now,
+                        TamañoBytes = pdfFile.Length,
+                        NumPaginas = numPaginas
+                    };
 
-                        if (!Directory.Exists(rutaDirectorio))
-                        {
-                            Directory.CreateDirectory(rutaDirectorio);
-                        }
+                    documentoPDF.EstructuraJSON = "{}";
+                    _context.DocumentosPDF.Add(documentoPDF);
 
-                        // Generar nombre único para el archivo
-                        string nombreOriginal = Path.GetFileNameWithoutExtension(archivo.FileName);
-                        // Sanitizar el nombre del archivo (eliminar caracteres no válidos)
-                        nombreOriginal = Regex.Replace(nombreOriginal, @"[^\w\-]", "_");
+                    await _context.SaveChangesAsync();
 
-                        string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-                        string nombreArchivo = $"{usuarioId}_{timestamp}_{nombreOriginal}.pdf";
-                        string rutaCompleta = Path.Combine(rutaDirectorio, nombreArchivo);
-
-                        // Guardar el archivo en el sistema de archivos
-                        using (var stream = new FileStream(rutaCompleta, FileMode.Create))
-                        {
-                            await archivo.CopyToAsync(stream);
-                        }
-
-                        // Obtener número de páginas (implementación básica, se puede mejorar)
-                        int numPaginas = 1; // Placeholder, en un sistema real se leería del PDF
-
-                        // Crear registro en la base de datos
-                        var documentoPDF = new DocumentoPDF
-                        {
-                            UsuarioId = usuarioId,
-                            Nombre = Path.GetFileName(archivo.FileName),
-                            Ruta = rutaCompleta,
-                            FechaSubida = DateTime.Now,
-                            TamañoBytes = archivo.Length,
-                            NumPaginas = numPaginas,
-                            EstructuraJSON = "{}" // Placeholder, en un sistema real se generaría
-                        };
-
-                        _context.DocumentosPDF.Add(documentoPDF);
-                        await _context.SaveChangesAsync();
-
-                        contadorExito++;
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex, "Error al subir archivo PDF");
-                        contadorError++;
-                    }
+                    archivosSubidos++;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error al subir el archivo {FileName}", pdfFile.FileName);
+                    errores.Add($"Error al subir {pdfFile.FileName}: {ex.Message}");
                 }
             }
 
-            // Mensaje de resultado
-            if (contadorExito > 0)
+            // Mensaje para el usuario
+            if (archivosSubidos > 0)
             {
-                TempData["Success"] = $"Se han subido {contadorExito} archivos correctamente.";
+                TempData["Message"] = $"Se han subido {archivosSubidos} archivo(s) correctamente.";
+                TempData["AlertType"] = "alert-success";
             }
-            if (contadorError > 0)
+
+            if (errores.Count > 0)
             {
-                TempData["Warning"] = $"No se pudieron subir {contadorError} archivos.";
+                TempData["Message"] = $"{TempData["Message"]} {string.Join(" ", errores)}";
+                TempData["AlertType"] = "alert-warning";
             }
 
             return RedirectToAction("Index");
@@ -158,21 +168,20 @@ namespace ProyectoAmbiente.Controllers
         public async Task<IActionResult> EliminarPDF(int id)
         {
             // Verifica si el usuario está autenticado
-            if (HttpContext.Session.GetInt32("UsuarioId") == null)
+            int? usuarioId = HttpContext.Session.GetInt32("UsuarioId");
+            if (usuarioId == null)
             {
                 return RedirectToAction("Login");
             }
 
-            // Obtiene el ID del usuario desde la sesión
-            int usuarioId = HttpContext.Session.GetInt32("UsuarioId").Value;
-
-            // Busca el documento en la base de datos
+            // Buscar el documento
             var documento = await _context.DocumentosPDF
                 .FirstOrDefaultAsync(d => d.Id == id && d.UsuarioId == usuarioId);
 
             if (documento == null)
             {
-                TempData["Error"] = "El archivo no existe o no tienes permisos para eliminarlo.";
+                TempData["Message"] = "El documento no se encontró o no tienes permiso para eliminarlo.";
+                TempData["AlertType"] = "alert-danger";
                 return RedirectToAction("Index");
             }
 
@@ -184,16 +193,33 @@ namespace ProyectoAmbiente.Controllers
                     System.IO.File.Delete(documento.Ruta);
                 }
 
-                // Eliminar registro de la base de datos
+                // Eliminar los registros de progreso
+                var progresos = await _context.ProgresosMecanografia
+                    .Where(p => p.DocumentoId == id)
+                    .ToListAsync();
+
+                _context.ProgresosMecanografia.RemoveRange(progresos);
+
+                // Eliminar los registros de estadísticas
+                var estadisticas = await _context.EstadisticasMecanografia
+                    .Where(e => e.DocumentoId == id)
+                    .ToListAsync();
+
+                _context.EstadisticasMecanografia.RemoveRange(estadisticas);
+
+                // Eliminar el registro del documento
                 _context.DocumentosPDF.Remove(documento);
+
                 await _context.SaveChangesAsync();
 
-                TempData["Success"] = "El archivo se ha eliminado correctamente.";
+                TempData["Message"] = "El documento se ha eliminado correctamente.";
+                TempData["AlertType"] = "alert-success";
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al eliminar archivo PDF");
-                TempData["Error"] = "Ha ocurrido un error al eliminar el archivo.";
+                _logger.LogError(ex, "Error al eliminar el documento {Id}", id);
+                TempData["Message"] = $"Error al eliminar el documento: {ex.Message}";
+                TempData["AlertType"] = "alert-danger";
             }
 
             return RedirectToAction("Index");

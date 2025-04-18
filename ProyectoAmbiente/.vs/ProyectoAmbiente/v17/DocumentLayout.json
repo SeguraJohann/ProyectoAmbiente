@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\wwwroot\\js\\pdfmanager.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\wwwroot\\js\\pdfmanager.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|d:\\u\\u\\ambiente web cliente servidor\\proyecto\\proyectoambiente\\proyectoambiente\\proyectoambiente\\models\\documentopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\models\\documentopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -38,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 60,
+          "SelectedChildIndex": 56,
           "Children": [
             {
               "$type": "Bookmark",
@@ -266,7 +274,44 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\UserController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAewFgAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-18T00:26:59.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "pdfManager.js",
+              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfManager.js",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\wwwroot\\js\\pdfManager.js",
+              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\js\\pdfManager.js",
+              "RelativeToolTip": "ProyectoAmbiente\\wwwroot\\js\\pdfManager.js",
+              "ViewState": "AgIAADwAAAAAAAAAAAAowH0AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-18T01:37:48.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\User\\Index.cshtml",
+              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "ProyectoAmbiente\\Views\\User\\Index.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAswIkAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-18T01:24:59.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "DocumentoPDF.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\DocumentoPDF.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\DocumentoPDF.cs",
@@ -274,12 +319,11 @@
               "RelativeToolTip": "ProyectoAmbiente\\Models\\DocumentoPDF.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T01:13:48.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T01:13:48.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Program.cs",
@@ -287,12 +331,11 @@
               "RelativeToolTip": "ProyectoAmbiente\\Program.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAADwvywAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:44:45.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T00:44:45.492Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\appsettings.json",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\appsettings.json",
@@ -300,12 +343,11 @@
               "RelativeToolTip": "ProyectoAmbiente\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-18T00:44:31.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T00:44:31.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Register.cshtml",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\User\\Register.cshtml",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\User\\Register.cshtml",
@@ -313,25 +355,11 @@
               "RelativeToolTip": "ProyectoAmbiente\\Views\\User\\Register.cshtml",
               "ViewState": "AgIAAAcAAAAAAAAAAAAuwCoAAADtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-18T00:27:14.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T00:27:14.123Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
-              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\UserController.cs",
-              "ViewState": "AgIAADIBAAAAAAAAAAAkwEYBAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:26:59.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "PDFAdmin.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
@@ -339,21 +367,19 @@
               "RelativeToolTip": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:26:57.277Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T00:26:57.277Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Usuario.cs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\Usuario.cs",
               "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\Usuario.cs",
               "RelativeToolTip": "ProyectoAmbiente\\Models\\Usuario.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA5wCEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwCEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-18T00:25:41.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-18T00:25:41.472Z"
             }
           ]
         },

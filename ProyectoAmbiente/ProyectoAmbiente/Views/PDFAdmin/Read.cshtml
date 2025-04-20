@@ -5,155 +5,210 @@
 }
 
 <!-- MAIN CONTENT -->
-    <div class="container-fluid">
-        @if (TempData["Message"] != null)
-        {
-            <div class="alert @TempData["AlertType"]">
-                @TempData["Message"]
-            </div>
-        }
-        <div style="display: flex; gap: var(--spacing-lg);">
+<div class="container-fluid">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert @TempData["AlertType"]">
+            @TempData["Message"]
+        </div>
+    }
+    <div style="display: flex; gap: var(--spacing-lg);">
 
-            <!-- Columna izquierda: Área principal de lectura -->
-            <div style="flex: 3;">
-                <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); height: 80vh; overflow: auto;">
-                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100); display: flex; justify-content: space-between; align-items: center;">
-                        <span>@(documento?.Nombre ?? "Visualizador de PDF")</span>
-                        <div>
-                            <span id="paginaActual" style="margin-right: var(--spacing-md); color: var(--neutral-300);">Página 1 de @(documento?.NumPaginas ?? 0)</span>
-                            <div style="display: inline-block;">
-                                <button id="btnPrevPage" class="btn btn-outline" style="padding: var(--spacing-xs) var(--spacing-sm); margin-right: var(--spacing-xs);">
-                                    <i class="fas fa-chevron-left"></i> Anterior
-                                </button>
-                                <button id="btnNextPage" class="btn btn-outline" style="padding: var(--spacing-xs) var(--spacing-sm);">
-                                    Siguiente <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
+        <!-- Columna izquierda: Área principal de lectura -->
+        <div style="flex: 3; height: 80vh;">
+            <iframe id="pdfViewer" src="~/lib/pdfjs/web/viewer.html?file=/PDFAdmin/ObtenerPDF/@documento.Id"
+                    style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+
+        <!-- Columna derecha: Notas y estadísticas -->
+        <div style="flex: 1;">
+            <!-- Notas del usuario -->
+            <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); margin-bottom: var(--spacing-lg);">
+                <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+                    Notas
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <textarea id="userNotes" class="form-control" rows="10" placeholder="Escriba sus notas aquí..."
+                                  style="background-color: var(--neutral-700); border-color: var(--neutral-600); color: var(--neutral-200); resize: none;">@(progreso?.TextoCompletado ?? "")</textarea>
                     </div>
-                    <div class="card-body" style="color: var(--neutral-200); display: flex; justify-content: center; align-items: center; position: relative;">
-                        @if (documento != null)
-                        {
-                            <canvas id="pdfViewer" style="width: 100%; height: auto;"></canvas>
-                            <div id="loadingIndicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--neutral-300); font-size: var(--font-size-xl);">
-                                Cargando PDF...
-                            </div>
-                        }
-                        else
-                        {
-                            <p style="text-align: center; color: var(--neutral-400);">
-                                Seleccione un archivo PDF para visualizar su contenido
-                            </p>
-                        }
+                    <div class="action-center">
+                        <button id="btnSaveProgress" class="btn btn-primary">Guardar progreso</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Columna derecha: Notas y estadísticas -->
-            <div style="flex: 1;">
-                <!-- Notas del usuario -->
-                <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg); margin-bottom: var(--spacing-lg);">
-                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
-                        Notas
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <textarea id="userNotes" class="form-control" rows="10" placeholder="Escriba sus notas aquí..." style="background-color: var(--neutral-700); border-color: var(--neutral-600); color: var(--neutral-200); resize: none;"></textarea>
-                        </div>
-                        <div class="action-center">
-                            <button id="btnSaveProgress" class="btn btn-primary">Guardar progreso</button>
-                        </div>
-                    </div>
+            <!-- Estadísticas -->
+            <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg);">
+                <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
+                    Estadísticas de lectura
                 </div>
-
-                <!-- Estadísticas -->
-                <div class="card" style="background-color: var(--neutral-800); box-shadow: var(--shadow-lg);">
-                    <div class="card-header" style="border-bottom: 1px solid var(--neutral-700); color: var(--neutral-100);">
-                        Estadísticas de lectura
-                    </div>
-                    <div class="card-body">
-                        <div style="display: flex; gap: var(--spacing-md);">
-                            <!-- Progreso -->
-                            <div style="flex: 1;">
-                                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
-                                    <div class="card-body" style="text-align: center;">
-                                        <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">Progreso</p>
-                                        <p id="progresoLectura" style="color: var(--primary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
-                                            @(progreso?.PorcentajeCompletado.ToString("F0") ?? "0")%
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Promedio de caracteres -->
-                            <div style="flex: 1;">
-                                <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
-                                    <div class="card-body" style="text-align: center;">
-                                        <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">CPM</p>
-                                        <p id="caracteresMinuto" style="color: var(--secondary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
-                                            0
-                                        </p>
-                                    </div>
+                <div class="card-body">
+                    <div style="display: flex; gap: var(--spacing-md);">
+                        <!-- Progreso -->
+                        <div style="flex: 1;">
+                            <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                                <div class="card-body" style="text-align: center;">
+                                    <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">Progreso</p>
+                                    <p id="progresoLectura" style="color: var(--primary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
+                                        @(progreso?.PorcentajeCompletado.ToString("F0") ?? "0")%
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Alertas -->
-                        <div class="alert" style="margin-top: var(--spacing-md); padding: var(--spacing-md); border-radius: var(--border-radius-sm); border-left: 4px solid var(--info-color); background-color: rgba(52, 152, 219, 0.1); color: var(--info-color);">
-                            <strong>Consejo:</strong> Toma descansos cada 25 minutos para mayor retención.
+                        <!-- Promedio de caracteres -->
+                        <div style="flex: 1;">
+                            <div class="card" style="background-color: var(--neutral-700); box-shadow: var(--shadow-sm);">
+                                <div class="card-body" style="text-align: center;">
+                                    <p style="color: var(--neutral-300); font-size: var(--font-size-sm); margin-bottom: var(--spacing-xs);">CPM</p>
+                                    <p id="caracteresMinuto" style="color: var(--secondary-color); font-size: var(--font-size-2xl); font-weight: bold; margin: 0;">
+                                        0
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
-                        <span id="estadoGuardado" class="badge badge-primary">Guardado</span>
-                        <span id="ultimaActualizacion" class="badge badge-neutral">Última actualización: @(progreso != null ? $"{(DateTime.Now - progreso.UltimaActualizacion).Minutes} min" : "Nunca")</span>
+
+                    <!-- Alertas -->
+                    <div class="alert" style="margin-top: var(--spacing-md); padding: var(--spacing-md); border-radius: var(--border-radius-sm); border-left: 4px solid var(--info-color); background-color: rgba(52, 152, 219, 0.1); color: var(--info-color);">
+                        <strong>Consejo:</strong> Toma descansos cada 25 minutos para mayor retención.
                     </div>
                 </div>
+                <div class="card-footer" style="background-color: var(--neutral-700); border-top: 1px solid var(--neutral-600);">
+                    <span id="estadoGuardado" class="badge badge-primary">Guardado</span>
+                    <span id="ultimaActualizacion" class="badge badge-neutral">Última actualización: @(progreso != null ? $"{(DateTime.Now - progreso.UltimaActualizacion).Minutes} min" : "Nunca")</span>
+                </div>
             </div>
-
         </div>
     </div>
+</div>
 
 @section Scripts {
-    <!-- PDF.js Library from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    @* Asegúrate de incluir el token antiforgery para las peticiones AJAX *@
+    @Html.AntiForgeryToken()
 
-    <!-- Cargar primero el script de PDF Reader -->
-    <script src="~/js/pdfReader.js"></script>
-
-    <!-- Inicializar después de que pdfReader.js esté cargado -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        @if (documento != null)
-        {
-            <text>
-                            // Datos del documento
-                        const documentoId = @documento.Id;
-                        const documentoNumPaginas = @documento.NumPaginas;
-                        const documentoNombre = '@documento.Nombre';
+        // Variables globales
+        const documentoId = @documento.Id;
+        const documentoNumPaginas = @documento.NumPaginas;
 
-                        // Datos del progreso
-                        const progresoInicial = {
-                            paginaActual: @progreso.PaginaActual,
-                        indiceCaracter: @progreso.IndiceCaracter,
-                        posicionX: @progreso.PosicionX,
-                        posicionY: @progreso.PosicionY,
-                        elementoId: '@progreso.ElementoId',
-                        fragmentoContexto: '@progreso.FragmentoContexto',
-                        porcentajeCompletado: @progreso.PorcentajeCompletado,
-                        textoCompletado: @Html.Raw(Json.Serialize(progreso.TextoCompletado))
-                            };
+        // Contador de tiempo de lectura
+        let tiempoInicio = new Date();
+        let contadorCaracteres = 0;
+        let actualizandoCPM = false;
 
-                        // Asegurarse de que la función esté disponible antes de llamarla
-                        if (typeof window.initPdfViewer === 'function') {
-                            window.initPdfViewer(documentoId, documentoNumPaginas, progresoInicial);
-                            } else {
-                            console.error('La función initPdfViewer no está disponible. Verifica que pdfReader.js se cargó correctamente.');
-                            }
-            </text>
-        }
+        // Función para guardar el progreso
+        function guardarProgreso() {
+            const notas = document.getElementById('userNotes').value;
+            const porcentaje = parseInt(document.getElementById('progresoLectura').innerText.replace('%', ''));
+
+            // Obtener la página actual del iframe (si es posible)
+            let paginaActual = 1;
+            try {
+                const pdfFrame = document.getElementById('pdfViewer');
+                if (pdfFrame && pdfFrame.contentWindow) {
+                    // Intentar obtener la página actual del visor PDF.js si está disponible
+                    if (pdfFrame.contentWindow.PDFViewerApplication) {
+                        paginaActual = pdfFrame.contentWindow.PDFViewerApplication.page || 1;
+                    }
+                }
+            } catch (e) {
+                console.warn("No se pudo obtener la página actual:", e);
+            }
+
+            // Preparar los datos para enviar
+            const formData = new FormData();
+            formData.append('documentoId', documentoId);
+            formData.append('paginaActual', paginaActual);
+            formData.append('indiceCaracter', 0);
+            formData.append('posicionX', 0);
+            formData.append('posicionY', 0);
+            formData.append('elementoId', '');
+            formData.append('fragmentoContexto', '');
+            formData.append('porcentajeCompletado', porcentaje);
+            formData.append('textoCompletado', notas);
+
+            // Obtener el token antiforgery
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            // Enviar los datos al servidor
+            fetch('/PDFAdmin/GuardarProgreso', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'RequestVerificationToken': token
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('estadoGuardado').innerText = 'Guardado';
+                        document.getElementById('ultimaActualizacion').innerText = 'Última actualización: ahora';
+                    } else {
+                        console.error('Error al guardar:', data.message);
+                        document.getElementById('estadoGuardado').innerText = 'Error al guardar';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error en la petición:', error);
+                    document.getElementById('estadoGuardado').innerText = 'Error al guardar';
                 });
+        }
+
+        // Actualizar CPM (Caracteres por minuto)
+        function actualizarCPM() {
+            if (actualizandoCPM) return;
+
+            actualizandoCPM = true;
+            const ahora = new Date();
+            const minutos = (ahora - tiempoInicio) / 60000; // Convertir ms a minutos
+
+            if (minutos > 0) {
+                const cpm = Math.round(contadorCaracteres / minutos);
+                document.getElementById('caracteresMinuto').innerText = cpm;
+            }
+
+            actualizandoCPM = false;
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function () {
+            // Botón para guardar progreso
+            document.getElementById('btnSaveProgress').addEventListener('click', guardarProgreso);
+
+            // Contador de caracteres en las notas
+            document.getElementById('userNotes').addEventListener('input', function (e) {
+                contadorCaracteres = e.target.value.length;
+                actualizarCPM();
+
+                // Actualizar estado de guardado
+                document.getElementById('estadoGuardado').innerText = 'Sin guardar';
+            });
+
+            // Actualizar CPM cada 30 segundos
+            setInterval(actualizarCPM, 30000);
+
+            // Intentar comunicarse con el iframe cuando esté cargado
+            const pdfFrame = document.getElementById('pdfViewer');
+            pdfFrame.onload = function () 
+            {
+                try {
+                    // Escuchar eventos de cambio de página si es posible
+                    if (pdfFrame.contentWindow.PDFViewerApplication) {
+                        pdfFrame.contentWindow.PDFViewerApplication.eventBus.on('pagechanging', function (evt) {
+                            // Actualizar progreso basado en la página actual
+                            const porcentaje = Math.round((evt.pageNumber / documentoNumPaginas) * 100);
+                            document.getElementById('progresoLectura').innerText = porcentaje + '%';
+                        });
+                    }
+                } catch (e) {
+                    console.warn("No se pudo establecer comunicación con el visor de PDF:", e);
+                }
+            };
+        });
+
+        // Guardar automáticamente cada 2 minutos
+        setInterval(guardarProgreso, 120000);
     </script>
 }

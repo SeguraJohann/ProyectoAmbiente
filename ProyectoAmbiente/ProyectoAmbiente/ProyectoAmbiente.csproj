@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="PDFS\" />
+    <Folder Include="wwwroot\lib\pdfjs\" />
   </ItemGroup>
 
 </Project>

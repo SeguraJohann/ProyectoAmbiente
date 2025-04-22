@@ -4,6 +4,37 @@
     var progreso = ViewBag.Progreso as ProyectoAmbiente.Models.ProgresoMecanografia;
 }
 
+<style>
+
+    /* Estilos para el texto a transcribir */
+    #textoATranscribir {
+        transition: background-color 0.3s ease;
+    }
+
+    #contenidoTranscripcion {
+        line-height: 1.5;
+        max-height: 150px;
+        overflow-y: auto;
+    }
+
+    .badge-success {
+        background-color: var(--success-color);
+        color: white;
+    }
+
+    .badge-warning {
+        background-color: var(--warning-color);
+        color: white;
+    }
+
+    .badge-danger {
+        background-color: var(--danger-color);
+        color: white;
+    }
+
+</style>
+
+
 <!-- MAIN CONTENT -->
 <div class="container-fluid">
     <div id="progresoData" style="display: none;">
@@ -39,6 +70,14 @@
                     <div class="form-group">
                         <textarea id="userNotes" class="form-control" rows="10" placeholder="Escriba sus notas aquí..."
                                   style="background-color: var(--neutral-700); border-color: var(--neutral-600); color: var(--neutral-200); resize: none;">@(progreso?.TextoCompletado ?? "")</textarea>
+                    </div>
+                    <!-- feedback -->
+                    <div id="textoATranscribir" class="mt-3 p-3 border rounded" style="background-color: var(--neutral-700); color: var(--neutral-200);">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="m-0">Texto a transcribir:</h6>
+                            <span id="indicadorPrecision" class="badge badge-success">100% Precisión</span>
+                        </div>
+                        <div id="contenidoTranscripcion" style="font-family: monospace; white-space: pre-wrap;"></div>
                     </div>
                     <div class="action-center">
                         <button id="btnSaveProgress" class="btn btn-primary">Guardar progreso</button>
@@ -100,18 +139,263 @@
         // Variables globales
         const documentoId = @documento.Id;
         const documentoNumPaginas = @documento.NumPaginas;
+        // Variables para el manejo del texto del PDF
+        let pdfTexto = {}; // Almacenará el texto extraído de cada página
+        let paginaActualTexto = ""; // Texto de la página actual
+        let ultimoFragmentoTranscrito = ""; // Último fragmento transcrito
+        let ultimoIndiceTranscrito = 0; // Posición del último carácter transcrito
+        let comparacionActiva = false; // Si está activa la comparación de texto
+
 
         // Contador de tiempo de lectura
         let tiempoInicio = new Date();
         let contadorCaracteres = 0;
         let actualizandoCPM = false;
 
+
+        // Función para extraer texto del PDF
+        function extraerTextoPDF() {
+            // Obtener referencia al iframe del PDF
+            const pdfIframe = document.querySelector('iframe');
+
+            if (!pdfIframe) {
+                console.error('No se encontró el iframe del visor PDF');
+                return;
+            }
+
+            // Función que verifica si el visor está listo
+            const verificarCargaCompleta = function () {
+                return new Promise((resolve) => {
+                    let intentos = 0;
+                    const maxIntentos = 30; // 30 segundos máximo de espera
+
+                    const comprobar = setInterval(() => {
+                        try {
+                            // Verificar si podemos acceder al iframe
+                            if (pdfIframe.contentDocument) {
+                                // Verificar si los elementos clave están disponibles
+                                const app = pdfIframe.contentWindow.PDFViewerApplication;
+
+                                // Si el visor parece estar listo y el documento PDF está cargado
+                                if (app && app.pdfDocument) {
+                                    clearInterval(comprobar);
+                                    resolve(app.pdfDocument);
+                                    return;
+                                }
+                            }
+                        } catch (e) {
+                            console.log("Aún esperando a que el PDF esté listo...", e);
+                        }
+
+                        intentos++;
+                        if (intentos >= maxIntentos) {
+                            clearInterval(comprobar);
+                            console.error('Tiempo de espera agotado para cargar el visor PDF');
+                            resolve(null);
+                        }
+                    }, 1000); // Verificar cada segundo
+                });
+            };
+
+            // Esperar a que el visor esté listo y extraer el texto
+            verificarCargaCompleta().then(async (pdfDocument) => {
+                if (!pdfDocument) {
+                    console.error('No se pudo obtener el documento PDF');
+                    return;
+                }
+
+                // Extraer texto de todas las páginas
+                const numPaginas = pdfDocument.numPages;
+                console.log(`El documento tiene ${numPaginas} páginas`);
+
+                // Obtener el texto página por página
+                for (let i = 1; i <= numPaginas; i++) {
+                    try {
+                        const pagina = await pdfDocument.getPage(i);
+                        const contenido = await pagina.getTextContent();
+                        const textoItems = contenido.items.map(item => item.str);
+                        const textoCompleto = textoItems.join(' ');
+                        pdfTexto[i] = textoCompleto;
+                        console.log(`Texto extraído de la página ${i} (primeros 100 caracteres): ${textoCompleto.substring(0, 100)}...`);
+                    } catch (error) {
+                        console.error(`Error al extraer texto de la página ${i}:`, error);
+                        pdfTexto[i] = "";
+                    }
+                }
+
+                // Establecer el texto de la página actual
+                actualizarTextoPaginaActual();
+
+                // Si hay un fragmento de contexto, buscar posición para continuar
+                const fragmentoContexto = "@(progreso?.FragmentoContexto ?? "")";
+                if (fragmentoContexto && fragmentoContexto.trim() !== '') {
+                    encontrarPosicionContinuacion(fragmentoContexto);
+                }
+                // Mostrar el texto a transcribir
+                mostrarTextoATranscribir();
+            });
+        }
+
+        // Función para comparar el texto que escribe el usuario con el texto del PDF
+        function compararTextoUsuario(textoUsuario) {
+            if (!comparacionActiva || !paginaActualTexto) return;
+
+            // Obtener el texto de la página actual
+            const textoCompleto = paginaActualTexto;
+
+            // Si no hay texto para comparar, salir
+            if (!textoCompleto) {
+                console.warn("No hay texto disponible para comparar");
+                return;
+            }
+
+            // Verificar precisión de la transcripción
+            verificarPrecisionTranscripcion(textoUsuario);
+
+            // Buscar el texto del usuario en el PDF
+            let mejorCoincidencia = { indice: -1, longitud: 0 };
+
+            // Primero intentamos con coincidencia exacta del último fragmento
+            if (ultimoFragmentoTranscrito && ultimoIndiceTranscrito > 0) {
+                // Verificar si el usuario continúa desde el último fragmento transcrito
+                if (textoUsuario.includes(ultimoFragmentoTranscrito)) {
+                    const parteNueva = textoUsuario.substring(textoUsuario.lastIndexOf(ultimoFragmentoTranscrito) + ultimoFragmentoTranscrito.length);
+                    if (parteNueva) {
+                        // Verificar si la parte nueva coincide con lo que sigue en el PDF
+                        const textoSiguiente = textoCompleto.substring(ultimoIndiceTranscrito);
+                        if (textoSiguiente.startsWith(parteNueva)) {
+                            console.log(`Continuación correcta: "${parteNueva}"`);
+                            // Actualizar el último fragmento transcrito
+                            ultimoFragmentoTranscrito = textoUsuario.substring(textoUsuario.length - Math.min(textoUsuario.length, 100));
+                            ultimoIndiceTranscrito += parteNueva.length;
+
+                            // Actualizar texto a transcribir
+                            mostrarTextoATranscribir();
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Si no encontramos continuación, buscar coincidencias más generales
+            // Tomar los últimos 50 caracteres del texto del usuario para buscar
+            const fragmentoBusqueda = textoUsuario.substring(Math.max(0, textoUsuario.length - 50));
+
+            if (fragmentoBusqueda.length > 10) { // Solo buscar si hay suficiente texto
+                const indice = textoCompleto.indexOf(fragmentoBusqueda);
+                if (indice >= 0) {
+                    console.log(`Coincidencia encontrada en posición ${indice}`);
+                    ultimoFragmentoTranscrito = fragmentoBusqueda;
+                    ultimoIndiceTranscrito = indice + fragmentoBusqueda.length;
+
+                    // Actualizar texto a transcribir
+                    mostrarTextoATranscribir();
+                } else {
+                    console.log("No se encontró coincidencia exacta");
+                    // Aquí podrías implementar búsqueda aproximada si es necesario
+                }
+            }
+        }
+
+        // Función para actualizar el texto de la página actual
+        function actualizarTextoPaginaActual() {
+            try {
+                const pdfIframe = document.getElementById('pdfViewer');
+                if (pdfIframe && pdfIframe.contentWindow && pdfIframe.contentWindow.PDFViewerApplication) {
+                    const paginaActual = pdfIframe.contentWindow.PDFViewerApplication.page || 1;
+                    paginaActualTexto = pdfTexto[paginaActual] || "";
+                    console.log(`Texto actualizado para la página ${paginaActual}`);
+
+                    // Actualizar interfaz o marcadores si es necesario
+                    resaltarTextoTranscrito();
+
+                    // Actualizar texto a transcribir
+                    mostrarTextoATranscribir();
+                }
+            } catch (e) {
+                console.error("Error al actualizar texto de la página actual:", e);
+            }
+        }
+
+        // Función para encontrar la posición de continuación basada en el fragmento de contexto
+        function encontrarPosicionContinuacion(fragmento) {
+            // Obtener la página actual
+            const paginaActual = @(progreso?.PaginaActual ?? 1);
+            const textoActual = pdfTexto[paginaActual] || "";
+
+            if (textoActual && fragmento) {
+                const indice = textoActual.indexOf(fragmento);
+                if (indice >= 0) {
+                    // Encontrado el fragmento, establecer la posición para continuar
+                    ultimoFragmentoTranscrito = fragmento;
+                    ultimoIndiceTranscrito = indice + fragmento.length;
+                    console.log(`Continuando desde: "${fragmento}" (posición ${ultimoIndiceTranscrito})`);
+
+                    // Resaltar el texto ya transcrito
+                    resaltarTextoTranscrito();
+
+                    // Mostrar al usuario dónde continuar
+                    const textoContinuacion = textoActual.substring(ultimoIndiceTranscrito, ultimoIndiceTranscrito + 100);
+                    console.log(`Texto a transcribir a continuación: "${textoContinuacion}..."`);
+
+                    // Opcional: mostrar en la interfaz un mensaje de continuación
+                    mostrarMensajeContinuacion(textoContinuacion);
+                } else {
+                    console.warn(`No se encontró el fragmento "${fragmento}" en la página ${paginaActual}`);
+                }
+            }
+        }
+
+        // Función para resaltar visualmente el texto ya transcrito
+        function resaltarTextoTranscrito() {
+            // Esta función podría implementarse en futuras versiones para
+            // resaltar visualmente el texto ya transcrito en el PDF
+            // Por ahora, solo imprimimos un mensaje en consola
+            if (ultimoFragmentoTranscrito) {
+                console.log(`Texto ya transcrito hasta: "${ultimoFragmentoTranscrito}"`);
+            }
+        }
+
+        // Función para mostrar un mensaje de continuación al usuario
+        function mostrarMensajeContinuacion(textoContinuacion) {
+            // Mostrar un mensaje temporal al usuario con el texto que debe continuar transcribiendo
+            const notasTextarea = document.getElementById('userNotes');
+            const textoActual = notasTextarea.value;
+
+            // Solo añadir mensaje de sugerencia si no hay texto o si ya estamos al final
+            if (!textoActual || textoActual.trim() === "" ||
+                textoActual.trim().endsWith(ultimoFragmentoTranscrito.trim())) {
+
+                // Añadir mensaje temporal
+                const mensajeTemp = document.createElement('div');
+                mensajeTemp.className = 'alert alert-info mt-2';
+                mensajeTemp.innerHTML = `
+                    <p><strong>Continúa transcribiendo:</strong></p>
+                    <p class="text-muted">${textoContinuacion}...</p>
+                `;
+
+                // Insertar después del textarea
+                const contenedorNotas = notasTextarea.parentNode;
+                if (contenedorNotas.querySelector('.alert-info')) {
+                    contenedorNotas.querySelector('.alert-info').remove();
+                }
+                contenedorNotas.appendChild(mensajeTemp);
+
+                // Eliminar después de 10 segundos
+                setTimeout(() => {
+                    if (mensajeTemp.parentNode) {
+                        mensajeTemp.parentNode.removeChild(mensajeTemp);
+                    }
+                }, 10000);
+            }
+        }
+
         // Función para guardar el progreso
         function guardarProgreso() {
             const notas = document.getElementById('userNotes').value;
             const porcentaje = parseInt(document.getElementById('progresoLectura').innerText.replace('%', ''));
 
-            // Obtener la página actual del iframe (si es posible)
+            // Obtener la página actual del iframe
             let paginaActual = 1;
             try {
                 const pdfFrame = document.getElementById('pdfViewer');
@@ -125,15 +409,27 @@
                 console.warn("No se pudo obtener la página actual:", e);
             }
 
+            // Extraer el fragmento de contexto (últimos caracteres transcritos)
+            let fragmentoContexto = "";
+            if (ultimoFragmentoTranscrito && ultimoFragmentoTranscrito.trim() !== "") {
+                // Usar el último fragmento detectado
+                fragmentoContexto = ultimoFragmentoTranscrito;
+            } else if (notas && notas.trim() !== "") {
+                // Si no tenemos fragmento detectado, tomar los últimos 50 caracteres del texto
+                fragmentoContexto = notas.substring(Math.max(0, notas.length - 50));
+            }
+
+            console.log(`Guardando progreso: Página ${paginaActual}, Fragmento: "${fragmentoContexto}"`);
+
             // Preparar los datos para enviar
             const formData = new FormData();
             formData.append('documentoId', documentoId);
             formData.append('paginaActual', paginaActual);
-            formData.append('indiceCaracter', 0);
+            formData.append('indiceCaracter', ultimoIndiceTranscrito);
             formData.append('posicionX', 0);
             formData.append('posicionY', 0);
-            formData.append('elementoId', '');
-            formData.append('fragmentoContexto', '');
+            formData.append('elementoId', 'default');
+            formData.append('fragmentoContexto', fragmentoContexto);
             formData.append('porcentajeCompletado', porcentaje);
             formData.append('textoCompletado', notas);
 
@@ -163,6 +459,7 @@
                     document.getElementById('estadoGuardado').innerText = 'Error al guardar';
                 });
         }
+
 
         // Actualizar CPM (Caracteres por minuto)
         function actualizarCPM() {
@@ -309,18 +606,158 @@
             }
         }
 
+        // Función para mostrar el texto que debe transcribirse a continuación
+        function mostrarTextoATranscribir() {
+            if (!paginaActualTexto) {
+                console.warn("No hay texto disponible para mostrar");
+                return;
+            }
+
+            // Obtener el contenedor donde mostraremos el texto
+            const contenedor = document.getElementById('contenidoTranscripcion');
+            if (!contenedor) return;
+
+            // Determinar qué texto mostrar a continuación
+            let textoSiguiente = "";
+
+            if (ultimoIndiceTranscrito > 0 && ultimoIndiceTranscrito < paginaActualTexto.length) {
+                // Mostrar los siguientes 200 caracteres después del último transcrito
+                textoSiguiente = paginaActualTexto.substring(
+                    ultimoIndiceTranscrito,
+                    Math.min(ultimoIndiceTranscrito + 200, paginaActualTexto.length)
+                );
+            } else {
+                // Si no tenemos posición de inicio, mostrar los primeros 200 caracteres
+                textoSiguiente = paginaActualTexto.substring(0, 200);
+            }
+
+            // Limpiar cualquier contenido anterior
+            contenedor.innerHTML = '';
+
+            // Mostrar el texto a transcribir con formato
+            contenedor.textContent = textoSiguiente;
+
+            console.log("Texto a transcribir actualizado");
+        }
+
+        // Función para verificar la precisión de la transcripción
+        function verificarPrecisionTranscripcion(textoUsuario) {
+            if (!paginaActualTexto || !comparacionActiva) return;
+
+            // Obtener los últimos caracteres escritos por el usuario
+            const ultimosCaracteres = textoUsuario.substring(Math.max(0, textoUsuario.length - 100));
+
+            if (ultimosCaracteres.length < 5) return; // Necesitamos suficiente texto para comparar
+
+            // Obtener el texto que debería estar transcribiendo
+            let textoCorrectoPDF = "";
+            let encontrado = false;
+
+            // Buscar coincidencia exacta en el texto del PDF
+            if (ultimoIndiceTranscrito > 0) {
+                // Buscar desde la última posición conocida
+                textoCorrectoPDF = paginaActualTexto.substring(
+                    ultimoIndiceTranscrito,
+                    Math.min(ultimoIndiceTranscrito + ultimosCaracteres.length, paginaActualTexto.length)
+                );
+
+                if (textoCorrectoPDF) {
+                    encontrado = true;
+                }
+            }
+
+            if (!encontrado) {
+                // Buscar en todo el texto de la página
+                const indice = paginaActualTexto.indexOf(ultimosCaracteres);
+                if (indice >= 0) {
+                    textoCorrectoPDF = ultimosCaracteres;
+                    encontrado = true;
+                    ultimoIndiceTranscrito = indice;
+                }
+            }
+
+            // Si no se encontró una coincidencia exacta, buscar la mejor coincidencia
+            if (!encontrado) {
+                console.log("No se encontró coincidencia exacta para la transcripción");
+                // Mostrar indicador de precisión en rojo
+                const indicadorPrecision = document.getElementById('indicadorPrecision');
+                if (indicadorPrecision) {
+                    indicadorPrecision.className = 'badge badge-danger';
+                    indicadorPrecision.textContent = 'Error en transcripción';
+                }
+
+                // Resaltar en rojo el texto del textarea
+                const textarea = document.getElementById('userNotes');
+                if (textarea) {
+                    textarea.style.border = '2px solid var(--danger-color)';
+
+                    // Restaurar después de 2 segundos
+                    setTimeout(() => {
+                        textarea.style.border = '';
+                    }, 2000);
+                }
+
+                return;
+            }
+
+            // Calcular precisión comparando textos
+            let coincidencias = 0;
+            const longitudMin = Math.min(ultimosCaracteres.length, textoCorrectoPDF.length);
+
+            for (let i = 0; i < longitudMin; i++) {
+                if (ultimosCaracteres[i] === textoCorrectoPDF[i]) {
+                    coincidencias++;
+                }
+            }
+
+            const precision = Math.round((coincidencias / longitudMin) * 100);
+
+            // Actualizar indicador de precisión
+            const indicadorPrecision = document.getElementById('indicadorPrecision');
+            if (indicadorPrecision) {
+                if (precision > 90) {
+                    indicadorPrecision.className = 'badge badge-success';
+                    indicadorPrecision.textContent = `${precision}% Precisión`;
+                } else if (precision > 70) {
+                    indicadorPrecision.className = 'badge badge-warning';
+                    indicadorPrecision.textContent = `${precision}% Precisión`;
+                } else {
+                    indicadorPrecision.className = 'badge badge-danger';
+                    indicadorPrecision.textContent = `${precision}% Precisión`;
+                }
+            }
+
+            // Si la precisión es alta, actualizar el último índice transcrito
+            if (precision > 90) {
+                ultimoIndiceTranscrito += longitudMin;
+                ultimoFragmentoTranscrito = ultimosCaracteres;
+
+                // Actualizar texto a transcribir
+                mostrarTextoATranscribir();
+
+                // Restablecer el borde del textarea si era rojo
+                const textarea = document.getElementById('userNotes');
+                if (textarea && textarea.style.border !== '') {
+                    textarea.style.border = '';
+                }
+            }
+        }
+
         // Event listeners
         document.addEventListener('DOMContentLoaded', function () {
             // Botón para guardar progreso
             document.getElementById('btnSaveProgress').addEventListener('click', guardarProgreso);
 
-            // Contador de caracteres en las notas
+            // Contador de caracteres en las notas y comparación con el texto del PDF
             document.getElementById('userNotes').addEventListener('input', function (e) {
                 contadorCaracteres = e.target.value.length;
                 actualizarCPM();
 
                 // Actualizar estado de guardado
                 document.getElementById('estadoGuardado').innerText = 'Sin guardar';
+
+                // Comparar texto del usuario con el PDF
+                compararTextoUsuario(e.target.value);
             });
 
             // Actualizar CPM cada 30 segundos
@@ -336,15 +773,24 @@
                             // Actualizar progreso basado en la página actual
                             const porcentaje = Math.round((evt.pageNumber / documentoNumPaginas) * 100);
                             document.getElementById('progresoLectura').innerText = porcentaje + '%';
+
+                            // Actualizar el texto de la página actual cuando cambie
+                            setTimeout(actualizarTextoPaginaActual, 300);
                         });
                     }
                 } catch (e) {
                     console.warn("No se pudo establecer comunicación con el visor de PDF:", e);
                 }
 
+                // Extraer texto del PDF cuando esté cargado
+                setTimeout(extraerTextoPDF, 1000);
+
                 // Restaurar la posición de lectura después de cargar el PDF
                 setTimeout(restaurarPosicionLectura, 1500);
             };
+
+            // Activar la comparación de texto después de cargar
+            setTimeout(() => { comparacionActiva = true; }, 2000);
         });
 
         // Guardar automáticamente cada 2 minutos

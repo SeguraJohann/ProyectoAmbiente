@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 60,
+          "SelectedChildIndex": 59,
           "Children": [
             {
               "$type": "Bookmark",
@@ -278,19 +278,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TestViewer.cshtml",
-              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "RelativeToolTip": "ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-19T06:55:11.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "pdf.mjs",
               "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\build\\pdf.mjs",
@@ -333,10 +320,22 @@
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
               "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
               "RelativeToolTip": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAAwK4BAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-20T01:14:45.639Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestViewer.cshtml",
+              "DocumentMoniker": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
+              "ToolTip": "D:\\U\\U\\Ambiente web Cliente Servidor\\Proyecto\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
+              "RelativeToolTip": "ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-19T06:55:11.446Z"
             },
             {
               "$type": "Document",

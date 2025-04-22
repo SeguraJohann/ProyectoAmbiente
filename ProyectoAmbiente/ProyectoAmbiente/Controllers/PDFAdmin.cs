@@ -3,18 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using ProyectoAmbiente.Models;
 using System.IO;
 
-namespace ProyectoAmbiente.Controllers
-{
+namespace ProyectoAmbiente.Controllers{
+    //controlador príncipal de los pdfs, aquí se revisa si el usuario está verificado, donde posteriormente
+    //se sigue el progreso de la mecanografía.
     public class PDFAdminController : Controller
     {
-        private readonly ProyectoAWCSContext _context;
-        private readonly ILogger<PDFAdminController> _logger;
-
         public PDFAdminController(ProyectoAWCSContext context, ILogger<PDFAdminController> logger)
         {
             _context = context;
             _logger = logger;
         }
+
+        private readonly ProyectoAWCSContext _context;
+        private readonly ILogger<PDFAdminController> _logger;
+
+        
 
         // GET: /PDFAdmin/Read/5
         public async Task<IActionResult> Read(int id)
@@ -60,6 +63,14 @@ namespace ProyectoAmbiente.Controllers
                 .OrderByDescending(p => p.UltimaActualizacion)
                 .FirstOrDefaultAsync();
 
+            
+
+            // Pasar los datos a la vista
+            ViewBag.Documento = documento;
+            ViewBag.Progreso = progreso;
+
+            return View();
+
             // Si no hay progreso, crear uno nuevo con valores iniciales
             if (progreso == null)
             {
@@ -81,12 +92,6 @@ namespace ProyectoAmbiente.Controllers
                 _context.ProgresosMecanografia.Add(progreso);
                 await _context.SaveChangesAsync();
             }
-
-            // Pasar los datos a la vista
-            ViewBag.Documento = documento;
-            ViewBag.Progreso = progreso;
-
-            return View();
         }
 
         // GET: /PDFAdmin/ObtenerPDF/5
@@ -108,15 +113,17 @@ namespace ProyectoAmbiente.Controllers
                 return NotFound();
             }
 
+            
+
+            // Leer el archivo y devolverlo como FileResult
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(documento.Ruta);
+            return File(fileBytes, "application/pdf", documento.Nombre);
+
             // Verificar que el archivo exista
             if (!System.IO.File.Exists(documento.Ruta))
             {
                 return NotFound();
             }
-
-            // Leer el archivo y devolverlo como FileResult
-            var fileBytes = await System.IO.File.ReadAllBytesAsync(documento.Ruta);
-            return File(fileBytes, "application/pdf", documento.Nombre);
         }
 
         // POST: /PDFAdmin/GuardarProgreso

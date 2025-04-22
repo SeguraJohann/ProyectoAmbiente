@@ -3,40 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\pdfadmin\\read.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\pdfadmin\\read.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\models\\proyectoawcscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\models\\proyectoawcscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\wwwroot\\lib\\pdfjs\\web\\viewer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\wwwroot\\lib\\pdfjs\\web\\viewer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\models\\progresomecanografia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\models\\progresomecanografia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\models\\estadisticasmecanografia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\models\\estadisticasmecanografia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\models\\documentopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\models\\documentopdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\migrations\\proyectoawcscontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\migrations\\proyectoawcscontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\migrations\\20250418004237_cambiosdenullsenusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\migrations\\20250418004237_cambiosdenullsenusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\migrations\\20250418002050_validacionesdeusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\migrations\\20250418002050_validacionesdeusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\migrations\\20250418000109_migracioninicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\migrations\\20250418000109_migracioninicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\wwwroot\\lib\\pdfjs\\web\\viewer.mjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\wwwroot\\lib\\pdfjs\\web\\viewer.mjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\test\\testviewer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\test\\testviewer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\pdfadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\pdfadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|c:\\users\\nico valencia\\documents\\github\\proyectoambiente\\proyectoambiente\\proyectoambiente\\views\\pdfadmin\\read.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{20EC9747-DBE6-4337-8FB1-69A2DBA74355}|ProyectoAmbiente\\ProyectoAmbiente.csproj|solutionrelative:proyectoambiente\\views\\pdfadmin\\read.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,21 +74,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 58,
+          "SelectedChildIndex": 57,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\appsettings.json",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\appsettings.json",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\appsettings.json",
-              "RelativeToolTip": "ProyectoAmbiente\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-22T04:44:26.455Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
@@ -288,95 +303,201 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "ProyectoAmbiente\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAHAAAAAAAAAA==",
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "ProyectoAmbiente\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-20T02:31:51.98Z",
+              "WhenOpened": "2025-04-22T05:42:41.49Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Read.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
-              "RelativeToolTip": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAASAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ProyectoAmbiente\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-20T01:14:45.639Z",
+              "WhenOpened": "2025-04-22T05:41:10.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PDFAdmin.cs",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
-              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAEwD8AAAAMAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ProyectoAWCSContext.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\ProyectoAWCSContext.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\ProyectoAWCSContext.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\ProyectoAWCSContext.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Models\\ProyectoAWCSContext.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-19T23:32:17.998Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TestViewer.cshtml",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "RelativeToolTip": "ProyectoAmbiente\\Views\\Test\\TestViewer.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-19T06:55:11.446Z"
+              "WhenOpened": "2025-04-22T05:41:06.124Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "viewer.html",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.html",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.html",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.html",
-              "RelativeToolTip": "ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.html",
-              "ViewState": "AgIAAHoCAAAAAAAAAAAowKwCAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-04-19T22:37:33.598Z",
+              "Title": "ProgresoMecanografia.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\ProgresoMecanografia.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\ProgresoMecanografia.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\ProgresoMecanografia.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Models\\ProgresoMecanografia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:41:02.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
-              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "EstadisticasMecanografia.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\EstadisticasMecanografia.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\EstadisticasMecanografia.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\EstadisticasMecanografia.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Models\\EstadisticasMecanografia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T02:20:52.496Z",
+              "WhenOpened": "2025-04-22T05:40:20.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "viewer.mjs",
-              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.mjs",
-              "RelativeDocumentMoniker": "ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.mjs",
-              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.mjs",
-              "RelativeToolTip": "ProyectoAmbiente\\wwwroot\\lib\\pdfjs\\web\\viewer.mjs",
-              "ViewState": "AgIAAHZSAAAAAAAAAAAAAKlSAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-04-20T02:08:11.635Z",
+              "DocumentIndex": 6,
+              "Title": "DocumentoPDF.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\DocumentoPDF.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\DocumentoPDF.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\DocumentoPDF.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Models\\DocumentoPDF.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:40:15.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProyectoAWCSContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\ProyectoAWCSContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Migrations\\ProyectoAWCSContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\ProyectoAWCSContextModelSnapshot.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Migrations\\ProyectoAWCSContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:40:14.932Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "20250418004237_CambiosDeNullsEnUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\20250418004237_CambiosDeNullsEnUsuario.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Migrations\\20250418004237_CambiosDeNullsEnUsuario.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\20250418004237_CambiosDeNullsEnUsuario.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Migrations\\20250418004237_CambiosDeNullsEnUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:40:13.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20250418002050_ValidacionesDeUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\20250418002050_ValidacionesDeUsuario.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Migrations\\20250418002050_ValidacionesDeUsuario.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\20250418002050_ValidacionesDeUsuario.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Migrations\\20250418002050_ValidacionesDeUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:40:12.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:34:24.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20250418000109_MigracionInicial.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\20250418000109_MigracionInicial.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Migrations\\20250418000109_MigracionInicial.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Migrations\\20250418000109_MigracionInicial.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Migrations\\20250418000109_MigracionInicial.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAgwAUAAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:39:27.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\UserController.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAmwHkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:35:16.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PDFAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\PDFAdmin.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:34:39.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ProyectoAmbiente\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T05:34:33.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Read.cshtml",
+              "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "RelativeDocumentMoniker": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "ToolTip": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "RelativeToolTip": "ProyectoAmbiente\\Views\\PDFAdmin\\Read.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-22T04:53:25.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "TestController.cs",
               "DocumentMoniker": "C:\\Users\\Nico Valencia\\Documents\\GitHub\\ProyectoAmbiente\\ProyectoAmbiente\\ProyectoAmbiente\\Controllers\\TestController.cs",
               "RelativeDocumentMoniker": "ProyectoAmbiente\\Controllers\\TestController.cs",
@@ -384,7 +505,8 @@
               "RelativeToolTip": "ProyectoAmbiente\\Controllers\\TestController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-19T07:37:32.381Z"
+              "WhenOpened": "2025-04-19T07:37:32.381Z",
+              "EditorCaption": ""
             }
           ]
         },

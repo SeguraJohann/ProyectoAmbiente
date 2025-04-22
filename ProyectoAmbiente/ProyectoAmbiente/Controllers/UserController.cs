@@ -8,12 +8,16 @@ using iTextSharp.text.pdf;
 using System.IO;
 using System.Reflection.PortableExecutable;
 
+
+//controlador príncipal de los usuarios, aquí se revisa el estado de la cuenta, y se asocian la entidad PDF con el
+//User
 namespace ProyectoAmbiente.Controllers
 {
     public class UserController : Controller
     {
-        private readonly ProyectoAWCSContext _context;
+        
         private readonly ILogger<UserController> _logger;
+        private readonly ProyectoAWCSContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public UserController(ProyectoAWCSContext context, ILogger<UserController> logger, IWebHostEnvironment webHostEnvironment)
@@ -33,6 +37,12 @@ namespace ProyectoAmbiente.Controllers
                 return RedirectToAction("Login");
             }
 
+            // Obtener los PDFs del usuario
+            var documentos = await _context.DocumentosPDF
+                .Where(d => d.UsuarioId == usuarioId)
+                .OrderByDescending(d => d.FechaSubida)
+                .ToListAsync();
+
             // Obtener información del usuario para mostrar en la vista
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == usuarioId);
             if (usuario == null)
@@ -42,12 +52,6 @@ namespace ProyectoAmbiente.Controllers
 
             ViewBag.UsuarioEmail = usuario.Email;
             ViewBag.FechaRegistro = usuario.FechaRegistro.ToString("dd MMMM, yyyy");
-
-            // Obtener los PDFs del usuario
-            var documentos = await _context.DocumentosPDF
-                .Where(d => d.UsuarioId == usuarioId)
-                .OrderByDescending(d => d.FechaSubida)
-                .ToListAsync();
 
             return View(documentos);
         }
@@ -95,7 +99,7 @@ namespace ProyectoAmbiente.Controllers
                 // Validar tamaño (25MB máximo)
                 if (pdfFile.Length > 25 * 1024 * 1024)
                 {
-                    errores.Add($"El archivo {pdfFile.FileName} excede el tamaño máximo de 25MB.");
+                    errores.Add($"El archivo {pdfFile.FileName} es mayor de 25MB, intente de nuevo.");
                     continue;
                 }
 
@@ -108,17 +112,19 @@ namespace ProyectoAmbiente.Controllers
 
                     string rutaCompleta = Path.Combine(pdfsDirectory, nombreArchivo);
 
-                    // Guardar el archivo
-                    using (var stream = new FileStream(rutaCompleta, FileMode.Create))
-                    {
-                        await pdfFile.CopyToAsync(stream);
-                    }
+                    
 
                     // Obtener el número de páginas del PDF
                     int numPaginas = 0;
                     using (PdfReader reader = new PdfReader(rutaCompleta))
                     {
                         numPaginas = reader.NumberOfPages;
+                    }
+
+                    // Guardar el archivo
+                    using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+                    {
+                        await pdfFile.CopyToAsync(stream);
                     }
 
                     // Guardar información en la base de datos

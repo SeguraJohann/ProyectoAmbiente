@@ -2,29 +2,25 @@ using Microsoft.AspNetCore.Mvc;
 using ProyectoAmbiente.Models;
 using System.Diagnostics;
 
-namespace ProyectoAmbiente.Controllers
-{
+namespace ProyectoAmbiente.Controllers{
+    //controlador para la gestión de las solicitudes relacionadas a la página príncipal.
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
+        public HomeController(ILogger<HomeController> logger){
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult Index(){
             return View();
         }
 
-        public IActionResult Privacy()
-        {
+        public IActionResult Privacy(){
             return View();
         }
 
-        public IActionResult styleguide()
-        {
+        public IActionResult styleguide(){
             return View();
         }
 

@@ -3,6 +3,7 @@ using System;
 
 namespace ProyectoAmbiente.Models
 {
+    //Entidad de las estadisticas, el proyecto final probablemente no las implemente.
     public class EstadisticasMecanografia
     {
         public int Id { get; set; }

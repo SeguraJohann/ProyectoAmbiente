@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+//el Framwork presenta herramientas de migración, permitiendo traer bases de datos y sus registros con comandos.
 namespace ProyectoAmbiente.Migrations
 {
     /// <inheritdoc />

@@ -156,7 +156,7 @@ namespace ProyectoAmbiente.Controllers
                         FragmentoContexto = fragmentoContexto,
                         UltimaActualizacion = DateTime.Now,
                         PorcentajeCompletado = porcentajeCompletado,
-                        TextoCompletado = textoCompletado
+                        TextoCompletado = textoCompletado ?? string.Empty
                     };
 
                     _context.ProgresosMecanografia.Add(progreso);
@@ -172,7 +172,7 @@ namespace ProyectoAmbiente.Controllers
                     progreso.FragmentoContexto = fragmentoContexto;
                     progreso.UltimaActualizacion = DateTime.Now;
                     progreso.PorcentajeCompletado = porcentajeCompletado;
-                    progreso.TextoCompletado = textoCompletado;
+                    progreso.TextoCompletado = textoCompletado ?? string.Empty;
 
                     _context.ProgresosMecanografia.Update(progreso);
                 }

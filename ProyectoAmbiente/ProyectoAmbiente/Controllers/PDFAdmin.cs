@@ -95,35 +95,13 @@ namespace ProyectoAmbiente.Controllers{
         }
 
         // GET: /PDFAdmin/ObtenerPDF/5
-        public async Task<IActionResult> ObtenerPDF(int id)
+        public IActionResult ObtenerPDF(int id)
         {
-            // Verificar si el usuario está autenticado
-            int? usuarioId = HttpContext.Session.GetInt32("UsuarioId");
-            if (usuarioId == null)
-            {
-                return Unauthorized();
-            }
-
-            // Buscar el documento
-            var documento = await _context.DocumentosPDF
-                .FirstOrDefaultAsync(d => d.Id == id && d.UsuarioId == usuarioId);
-
-            if (documento == null)
-            {
+            var pdf = _context.DocumentoPDF.FirstOrDefault(p => p.Id == id);
+            if (pdf == null)
                 return NotFound();
-            }
 
-            
-
-            // Leer el archivo y devolverlo como FileResult
-            var fileBytes = await System.IO.File.ReadAllBytesAsync(documento.Ruta);
-            return File(fileBytes, "application/pdf", documento.Nombre);
-
-            // Verificar que el archivo exista
-            if (!System.IO.File.Exists(documento.Ruta))
-            {
-                return NotFound();
-            }
+            return File(pdf.Contenido, "application/pdf", pdf.Nombre);
         }
 
         // POST: /PDFAdmin/GuardarProgreso
@@ -233,5 +211,42 @@ namespace ProyectoAmbiente.Controllers{
                 return Json(new { success = false, message = "Error al guardar las estadísticas" });
             }
         }
+
+        //funcionalidades adicionales:
+        // Para servir el archivo PDF como recurso
+        [HttpGet]
+        public async Task<IActionResult> GetPDF(int id)
+        {
+            var pdf = await _context.DocumentosPDF.FirstOrDefaultAsync(p => p.Id == id);
+            if (pdf == null)
+                return NotFound();
+
+            var filePath = Path.Combine("wwwroot", "archivos", pdf.NombreGuardado);
+            if (!System.IO.File.Exists(filePath))
+                return NotFound();
+
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            return File(fileStream, "application/pdf");
+        }
+
+        public class ProgresoLecturaDTO
+        {
+            public int PdfId { get; set; }
+            public int PaginaActual { get; set; }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> ObtenerProgreso(int id)
+        {
+            var documento = await _context.DocumentosPDF.FindAsync(id);
+            if (documento == null)
+                return NotFound();
+
+            return Json(new { paginaActual = documento.PaginaActual });
+        }
+
+
+
     }
 }

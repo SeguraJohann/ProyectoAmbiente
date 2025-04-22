@@ -14,6 +14,8 @@ namespace ProyectoAmbiente.Models
         public DateTime FechaSubida { get; set; }
         public long TamañoBytes { get; set; }
         public int NumPaginas { get; set; }
+        public int PaginaActual {  get; set; }
+        public String NombreGuardado { get; set; }
         public string EstructuraJSON { get; set; } // Almacena elementos de texto con sus coordenadas
         // Relaciones de navegación
         public virtual Usuario Usuario { get; set; }

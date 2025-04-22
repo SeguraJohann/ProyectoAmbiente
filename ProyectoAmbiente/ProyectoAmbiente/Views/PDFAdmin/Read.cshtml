@@ -6,6 +6,14 @@
 
 <!-- MAIN CONTENT -->
 <div class="container-fluid">
+    <div id="progresoData" style="display: none;">
+        @Html.Raw(Json.Serialize(new
+            {
+                paginaActual = progreso?.PaginaActual ?? 1,
+                fragmentoContexto = progreso?.FragmentoContexto ?? "",
+                porcentajeCompletado = progreso?.PorcentajeCompletado ?? 0
+            }))
+    </div>
     @if (TempData["Message"] != null)
     {
         <div class="alert @TempData["AlertType"]">
@@ -172,6 +180,135 @@
             actualizandoCPM = false;
         }
 
+        // Función para buscar en el PDF cuando esté listo
+        function buscarEnPDFCuandoEsteListoEsperaPolling(texto, pagina = null) {
+            // Obtener referencia al iframe
+            const pdfIframe = document.querySelector('iframe');
+
+            if (!pdfIframe) {
+                console.error('No se encontró el iframe del visor PDF');
+                return;
+            }
+
+            // Función que verificará si el visor está listo
+            const verificarCargaCompleta = function () {
+                return new Promise((resolve) => {
+                    let intentos = 0;
+                    const maxIntentos = 30; // 30 segundos máximo de espera
+
+                    const comprobar = setInterval(() => {
+                        try {
+                            // Verificar si podemos acceder al iframe
+                            if (pdfIframe.contentDocument) {
+                                // Verificar si los elementos clave están disponibles
+                                const app = pdfIframe.contentWindow.PDFViewerApplication;
+                                const findbtn = pdfIframe.contentDocument.getElementById('viewFindButton');
+                                const pageInput = pdfIframe.contentDocument.getElementById('pageNumber');
+
+                                // Si el visor parece estar listo
+                                if (app && app.pdfDocument && findbtn && pageInput) {
+                                    clearInterval(comprobar);
+                                    resolve(true);
+                                    return;
+                                }
+                            }
+                        } catch (e) {
+                            console.log("Aún esperando...", e);
+                        }
+
+                        intentos++;
+                        if (intentos >= maxIntentos) {
+                            clearInterval(comprobar);
+                            console.error('Tiempo de espera agotado para cargar el visor PDF');
+                            resolve(false);
+                        }
+                    }, 1000); // Verificar cada segundo
+                });
+            };
+
+            // Esperar a que el visor esté listo y luego realizar la búsqueda
+            verificarCargaCompleta().then(listo => {
+                if (listo) {
+                    console.log('Visor PDF listo. Iniciando búsqueda...');
+
+                    try {
+                        // Ir a la página especificada si se proporciona
+                        if (pagina !== null) {
+                            const pageInput = pdfIframe.contentDocument.getElementById('pageNumber');
+                            pageInput.value = pagina;
+
+                            // Crear y disparar un evento de cambio
+                            const changeEvent = new Event('change', { bubbles: true });
+                            pageInput.dispatchEvent(changeEvent);
+
+                            // Dar tiempo para que se cargue la página
+                            setTimeout(() => realizarBusqueda(), 500);
+                        } else {
+                            realizarBusqueda();
+                        }
+
+                        // Función para realizar la búsqueda
+                        function realizarBusqueda() {
+                            // Si no hay texto que buscar, salimos
+                            if (!texto || texto.trim() === '') {
+                                console.log('No hay texto que buscar');
+                                return;
+                            }
+
+                            // 1. Abrir la barra de búsqueda
+                            const findButton = pdfIframe.contentDocument.getElementById('viewFindButton');
+                            findButton.click();
+
+                            // 2. Esperar a que la barra de búsqueda esté visible
+                            setTimeout(() => {
+                                // 3. Establecer el texto de búsqueda
+                                const findInput = pdfIframe.contentDocument.getElementById('findInput');
+                                findInput.value = texto;
+
+                                // 4. Disparar evento de entrada para activar la búsqueda
+                                const inputEvent = new Event('input', { bubbles: true });
+                                findInput.dispatchEvent(inputEvent);
+
+                                // 5. Esperar a que se procese la búsqueda y hacer clic en "Siguiente"
+                                setTimeout(() => {
+                                    const findNextButton = pdfIframe.contentDocument.getElementById('findNextButton');
+                                    findNextButton.click();
+
+                                    console.log(`Búsqueda completada para: "${texto}"`);
+                                }, 300);
+                            }, 300);
+                        }
+
+                    } catch (error) {
+                        console.error('Error al realizar la búsqueda:', error);
+                    }
+                } else {
+                    console.error('No se pudo iniciar la búsqueda porque el visor PDF no está listo');
+                }
+            });
+        }
+
+        // Función para restaurar la posición del usuario
+        function restaurarPosicionLectura() {
+            // Obtener datos del progreso desde las variables de Razor
+            const paginaActual = @(progreso?.PaginaActual ?? 1);
+            const fragmentoContexto = "@(progreso?.FragmentoContexto ?? "")";
+
+            // Verificar si tenemos un fragmento de contexto y página para buscar
+            if (fragmentoContexto && fragmentoContexto.trim() !== '') {
+                console.log(`Restaurando posición: Página ${paginaActual}, Texto: "${fragmentoContexto}"`);
+
+                // Buscar el fragmento en la página correspondiente
+                buscarEnPDFCuandoEsteListoEsperaPolling(fragmentoContexto, paginaActual);
+            } else if (paginaActual > 1) {
+                // Si no hay fragmento pero hay una página guardada, ir a esa página
+                console.log(`Restaurando posición: Página ${paginaActual}`);
+                buscarEnPDFCuandoEsteListoEsperaPolling("", paginaActual);
+            } else {
+                console.log('No hay suficiente información para restaurar la posición');
+            }
+        }
+
         // Event listeners
         document.addEventListener('DOMContentLoaded', function () {
             // Botón para guardar progreso
@@ -191,8 +328,7 @@
 
             // Intentar comunicarse con el iframe cuando esté cargado
             const pdfFrame = document.getElementById('pdfViewer');
-            pdfFrame.onload = function () 
-            {
+            pdfFrame.onload = function () {
                 try {
                     // Escuchar eventos de cambio de página si es posible
                     if (pdfFrame.contentWindow.PDFViewerApplication) {
@@ -205,6 +341,9 @@
                 } catch (e) {
                     console.warn("No se pudo establecer comunicación con el visor de PDF:", e);
                 }
+
+                // Restaurar la posición de lectura después de cargar el PDF
+                setTimeout(restaurarPosicionLectura, 1500);
             };
         });
 

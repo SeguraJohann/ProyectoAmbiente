@@ -75,7 +75,6 @@
                     <div id="textoATranscribir" class="mt-3 p-3 border rounded" style="background-color: var(--neutral-700); color: var(--neutral-200);">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h6 class="m-0">Texto a transcribir:</h6>
-                            <span id="indicadorPrecision" class="badge badge-success">100% Precisión</span>
                         </div>
                         <div id="contenidoTranscripcion" style="font-family: monospace; white-space: pre-wrap;"></div>
                     </div>
@@ -271,6 +270,10 @@
 
                             // Actualizar texto a transcribir
                             mostrarTextoATranscribir();
+
+                            // Actualizar la búsqueda en el PDF
+                            actualizarBusquedaPDF();
+
                             return;
                         }
                     }
@@ -290,6 +293,9 @@
 
                     // Actualizar texto a transcribir
                     mostrarTextoATranscribir();
+
+                    // Actualizar la búsqueda en el PDF
+                    actualizarBusquedaPDF();
                 } else {
                     console.log("No se encontró coincidencia exacta");
                     // Aquí podrías implementar búsqueda aproximada si es necesario
@@ -328,7 +334,7 @@
                 if (indice >= 0) {
                     // Encontrado el fragmento, establecer la posición para continuar
                     ultimoFragmentoTranscrito = fragmento;
-                    ultimoIndiceTranscrito = indice + fragmento.length;
+                    ultimoIndiceTranscrito = indice;
                     console.log(`Continuando desde: "${fragmento}" (posición ${ultimoIndiceTranscrito})`);
 
                     // Resaltar el texto ya transcrito
@@ -370,9 +376,9 @@
                 const mensajeTemp = document.createElement('div');
                 mensajeTemp.className = 'alert alert-info mt-2';
                 mensajeTemp.innerHTML = `
-                    <p><strong>Continúa transcribiendo:</strong></p>
-                    <p class="text-muted">${textoContinuacion}...</p>
-                `;
+                            <p><strong>Continúa transcribiendo:</strong></p>
+                            <p class="text-muted">${textoContinuacion}...</p>
+                        `;
 
                 // Insertar después del textarea
                 const contenedorNotas = notasTextarea.parentNode;
@@ -409,13 +415,19 @@
                 console.warn("No se pudo obtener la página actual:", e);
             }
 
-            // Extraer el fragmento de contexto (últimos caracteres transcritos)
+            // Extraer el fragmento de contexto (texto a transcribir a continuación)
             let fragmentoContexto = "";
-            if (ultimoFragmentoTranscrito && ultimoFragmentoTranscrito.trim() !== "") {
-                // Usar el último fragmento detectado
-                fragmentoContexto = ultimoFragmentoTranscrito;
+
+            // Obtener el texto correcto del PDF (no el texto del usuario)
+            if (paginaActualTexto && ultimoIndiceTranscrito > 0) {
+                // Tomar los siguientes 50 caracteres después de la posición actual como fragmento de contexto
+                fragmentoContexto = paginaActualTexto.substring(
+                    ultimoIndiceTranscrito,
+                    Math.min(ultimoIndiceTranscrito + 50, paginaActualTexto.length)
+                );
             } else if (notas && notas.trim() !== "") {
-                // Si no tenemos fragmento detectado, tomar los últimos 50 caracteres del texto
+                // Si no tenemos texto del PDF, usar los últimos 50 caracteres del texto del usuario
+                // (este es el caso de contingencia, preferimos el método anterior)
                 fragmentoContexto = notas.substring(Math.max(0, notas.length - 50));
             }
 
@@ -475,6 +487,161 @@
             }
 
             actualizandoCPM = false;
+        }
+
+        // Función para actualizar la búsqueda en el PDF en tiempo real
+        function actualizarBusquedaPDF() {
+            // Solo actualizar si tenemos un fragmento de texto
+            if (!ultimoFragmentoTranscrito || ultimoFragmentoTranscrito.trim() === '') {
+                return;
+            }
+
+            // Obtener la página actual
+            let paginaActual = 1;
+            try {
+                const pdfFrame = document.getElementById('pdfViewer');
+                if (pdfFrame && pdfFrame.contentWindow && pdfFrame.contentWindow.PDFViewerApplication) {
+                    paginaActual = pdfFrame.contentWindow.PDFViewerApplication.page || 1;
+
+                    // Buscar el texto en el PDF actual
+                    const fragmentoABuscar = ultimoFragmentoTranscrito.substring(Math.max(0, ultimoFragmentoTranscrito.length - 30));
+                    console.log(`Buscando en tiempo real: "${fragmentoABuscar}" en página ${paginaActual}`);
+
+                    // Usar nuestra función de búsqueda
+                    buscarEnPDF(fragmentoABuscar);
+                }
+            } catch (e) {
+                console.warn("No se pudo actualizar la búsqueda en el PDF:", e);
+            }
+        }
+
+        // Función para establecer el atributo hidden en el findbar de manera permanente
+        function establecerFindbarOculto() {
+            // Función que verifica y modifica el findbar
+            function verificarYModificarFindbar() {
+                const pdfIframe = document.querySelector('iframe');
+                if (!pdfIframe || !pdfIframe.contentDocument) {
+                    return false; // El iframe aún no está disponible
+                }
+
+                try {
+                    // Obtener la barra de búsqueda
+                    const findbar = pdfIframe.contentDocument.getElementById('findbar');
+                    if (findbar) {
+                        // Establecer el atributo hidden
+                        findbar.setAttribute('hidden', '');
+
+                        // También podemos aplicar CSS adicional para asegurarnos
+                        findbar.style.display = 'none !important';
+                        findbar.style.visibility = 'hidden';
+
+                        console.log('Findbar establecido como oculto permanentemente');
+
+                        // Crear un MutationObserver para mantenerlo oculto
+                        const observer = new MutationObserver((mutations) => {
+                            // Si se elimina el atributo hidden, volver a aplicarlo
+                            if (!findbar.hasAttribute('hidden')) {
+                                findbar.setAttribute('hidden', '');
+                                findbar.style.display = 'none !important';
+                                findbar.style.visibility = 'hidden';
+                            }
+                        });
+
+                        // Observar cambios en atributos
+                        observer.observe(findbar, {
+                            attributes: true,
+                            attributeFilter: ['hidden', 'class', 'style']
+                        });
+
+                        return true; // Éxito
+                    }
+                    return false; // Findbar aún no existe
+                } catch (error) {
+                    console.error('Error al modificar findbar:', error);
+                    return false;
+                }
+            }
+
+            // Intentar modificar inmediatamente
+            if (verificarYModificarFindbar()) {
+                return; // Si tuvo éxito, salir
+            }
+
+            // Si no tuvo éxito, configurar un intervalo para seguir intentando
+            let intentos = 0;
+            const maxIntentos = 20; // Máximo número de intentos
+
+            const intervalo = setInterval(() => {
+                intentos++;
+                if (verificarYModificarFindbar() || intentos >= maxIntentos) {
+                    clearInterval(intervalo);
+                    if (intentos >= maxIntentos) {
+                        console.warn('No se pudo ocultar el findbar después de múltiples intentos');
+                    }
+                }
+            }, 500); // Verificar cada 500ms
+        }
+
+        // Función más simple para buscar en el PDF (sin esperar polling)
+        // Modificar la función buscarEnPDF para devolver el foco al textarea
+        function buscarEnPDF(texto) {
+            if (!texto || texto.trim() === '') {
+                return;
+            }
+
+            const pdfIframe = document.querySelector('iframe');
+            if (!pdfIframe || !pdfIframe.contentDocument) {
+                return;
+            }
+
+            // Guardar referencia al textarea para restaurar el foco después
+            const textarea = document.getElementById('userNotes');
+
+            try {
+                // Verificar si los elementos clave están disponibles
+                const findButton = pdfIframe.contentDocument.getElementById('viewFindButton');
+                const findInput = pdfIframe.contentDocument.getElementById('findInput');
+
+                if (!findButton || !findInput) {
+                    return;
+                }
+
+                // Si la búsqueda aún no está abierta, abrirla
+                const findbar = pdfIframe.contentDocument.getElementById('findbar');
+                if (findbar && !findbar.classList.contains('visible')) {
+                    findButton.click();
+                }
+
+                // Establecer el texto de búsqueda
+                findInput.value = texto;
+
+                // Disparar evento de entrada para activar la búsqueda
+                const inputEvent = new Event('input', { bubbles: true });
+                findInput.dispatchEvent(inputEvent);
+
+                // Buscar el siguiente resultado
+                setTimeout(() => {
+                    const findNextButton = pdfIframe.contentDocument.getElementById('findNextButton');
+                    if (findNextButton) {
+                        findNextButton.click();
+
+                        // Devolver el foco al textarea después de un breve retraso
+                        setTimeout(() => {
+                            if (textarea) {
+                                textarea.focus();
+
+                                // Opcional: mover el cursor al final del texto
+                                const len = textarea.value.length;
+                                textarea.setSelectionRange(len, len);
+                            }
+                        }, 150);
+                    }
+                }, 100);
+            } catch (error) {
+                console.error('Error al realizar la búsqueda en tiempo real:', error);
+                // Asegurar que el foco vuelva al textarea incluso si hay error
+                if (textarea) textarea.focus();
+            }
         }
 
         // Función para buscar en el PDF cuando esté listo
@@ -676,14 +843,17 @@
                 }
             }
 
-            // Si no se encontró una coincidencia exacta, buscar la mejor coincidencia
+            // Contenedor de texto a transcribir
+            const contenedorTexto = document.getElementById('textoATranscribir');
+
+            // Si no se encontró una coincidencia exacta, mostrar error
             if (!encontrado) {
                 console.log("No se encontró coincidencia exacta para la transcripción");
-                // Mostrar indicador de precisión en rojo
-                const indicadorPrecision = document.getElementById('indicadorPrecision');
-                if (indicadorPrecision) {
-                    indicadorPrecision.className = 'badge badge-danger';
-                    indicadorPrecision.textContent = 'Error en transcripción';
+
+                // Cambiar color del contenedor a rojo
+                if (contenedorTexto) {
+                    contenedorTexto.style.backgroundColor = 'rgba(220, 53, 69, 0.2)'; // Rojo con opacidad
+                    contenedorTexto.style.borderColor = 'var(--danger-color)';
                 }
 
                 // Resaltar en rojo el texto del textarea
@@ -712,19 +882,24 @@
 
             const precision = Math.round((coincidencias / longitudMin) * 100);
 
-            // Actualizar indicador de precisión
-            const indicadorPrecision = document.getElementById('indicadorPrecision');
-            if (indicadorPrecision) {
+            // Actualizar color del contenedor según precisión
+            if (contenedorTexto) {
                 if (precision > 90) {
-                    indicadorPrecision.className = 'badge badge-success';
-                    indicadorPrecision.textContent = `${precision}% Precisión`;
+                    contenedorTexto.style.backgroundColor = 'rgba(40, 167, 69, 0.2)'; // Verde con opacidad
+                    contenedorTexto.style.borderColor = 'var(--success-color)';
                 } else if (precision > 70) {
-                    indicadorPrecision.className = 'badge badge-warning';
-                    indicadorPrecision.textContent = `${precision}% Precisión`;
+                    contenedorTexto.style.backgroundColor = 'rgba(255, 193, 7, 0.2)'; // Amarillo con opacidad
+                    contenedorTexto.style.borderColor = 'var(--warning-color)';
                 } else {
-                    indicadorPrecision.className = 'badge badge-danger';
-                    indicadorPrecision.textContent = `${precision}% Precisión`;
+                    contenedorTexto.style.backgroundColor = 'rgba(220, 53, 69, 0.2)'; // Rojo con opacidad
+                    contenedorTexto.style.borderColor = 'var(--danger-color)';
                 }
+
+                // Restaurar después de unos segundos
+                setTimeout(() => {
+                    contenedorTexto.style.backgroundColor = 'var(--neutral-700)';
+                    contenedorTexto.style.borderColor = 'var(--neutral-600)';
+                }, 3000);
             }
 
             // Si la precisión es alta, actualizar el último índice transcrito
@@ -740,6 +915,9 @@
                 if (textarea && textarea.style.border !== '') {
                     textarea.style.border = '';
                 }
+
+                // Actualizar la búsqueda en el PDF en tiempo real
+                actualizarBusquedaPDF();
             }
         }
 
@@ -767,26 +945,19 @@
             const pdfFrame = document.getElementById('pdfViewer');
             pdfFrame.onload = function () {
                 try {
-                    // Escuchar eventos de cambio de página si es posible
-                    if (pdfFrame.contentWindow.PDFViewerApplication) {
-                        pdfFrame.contentWindow.PDFViewerApplication.eventBus.on('pagechanging', function (evt) {
-                            // Actualizar progreso basado en la página actual
-                            const porcentaje = Math.round((evt.pageNumber / documentoNumPaginas) * 100);
-                            document.getElementById('progresoLectura').innerText = porcentaje + '%';
+                    // ... código existente ...
 
-                            // Actualizar el texto de la página actual cuando cambie
-                            setTimeout(actualizarTextoPaginaActual, 300);
-                        });
-                    }
+                    // Extraer texto del PDF cuando esté cargado
+                    setTimeout(extraerTextoPDF, 1000);
+
+                    // Ocultar findbar de manera permanente
+                    setTimeout(establecerFindbarOculto, 1500);
+
+                    // Restaurar la posición de lectura después de cargar el PDF
+                    setTimeout(restaurarPosicionLectura, 2000);
                 } catch (e) {
                     console.warn("No se pudo establecer comunicación con el visor de PDF:", e);
                 }
-
-                // Extraer texto del PDF cuando esté cargado
-                setTimeout(extraerTextoPDF, 1000);
-
-                // Restaurar la posición de lectura después de cargar el PDF
-                setTimeout(restaurarPosicionLectura, 1500);
             };
 
             // Activar la comparación de texto después de cargar
